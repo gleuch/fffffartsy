@@ -1,0 +1,74 @@
+!!!
+%html{:lang => (session[:locale] || 'en')}
+  /
+    SPEED PROJECT BY GREG LEUCH
+    IDEA FROM EVAN ROTH
+    http://fffff.at
+    2012 11 18
+  %head
+    %meta{:charset => "utf-8"}
+    %title= page_title
+    %meta{:name => "description", :content => @meta[:description]}
+    %meta{:name => "author", :content => t.template.meta.author}
+    %meta{:name => "robots", :content => @meta[:robots]}
+    - unless @canonical_url.blank?
+      %meta{:name => 'canonical', :content => @canonical_url.gsub(/\s/m, '_')}
+
+    = yield_content(:meta) if content_for?(:meta)
+
+    %link{:rel => 'shortcut icon', :href => "/favicon.ico"}
+
+    <!--[if lt IE 9]>
+    %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    <![endif]-->
+
+    %meta{:name => "viewport", :content => "width=device-width; initial-scale=1"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/default.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/screen.css", :media => "only screen and (min-width: 480px)"}
+    - #%link{:rel => "stylesheet", :type => "text/css", :href => "/css/mobile.css", :media => "handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)"}
+    = yield_content(:css) if content_for?(:css)
+
+    %script{:type => "text/javascript", :src => "/js/jquery-1.8.3.min.js"}
+    %script{:type => "text/javascript", :src => "/js/site.js"}
+    %script{:type => "text/javascript"}
+      - unless prod?
+        var _gaq = {push:function(a) {console.log('GA: '+ a.toString());}};
+      - else
+        var _gaq = _gaq || [], _gaq_last_pageview = location.href;
+        _gaq.push(['_setAccount', '#{configatron.analytics_id}']);
+        _gaq.push(['_setDomainName', '#{request.host}']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+    = yield_content(:js) if content_for?(:js)
+
+  %body{:class => @body_class.join(' ')}
+    #container
+      = yield_content(:page_top) if content_for?(:page_top)
+
+      - # HEADER!!!!
+      %header#header
+        .container.c
+          %h1#logo.print
+            %a{:href => "/", :title => t.name}= t.name
+
+          - if flashes?
+            %aside#flashes
+              = show_flashes
+
+      %article#content
+        .container.c
+          %section
+            = yield
+
+          - if content_for?(:footnotes)
+            %footer#footnotes= yield_content(:footnotes)
+
+
+      %footer#footer
+        .container.c
+          %aside#credits= t.template.footer.credits( l(Time.now, '%Y') )
+
+      = haml :'layouts/_page_bottom'
+
+    = yield_content(:page_bottom) if content_for?(:page_bottom)

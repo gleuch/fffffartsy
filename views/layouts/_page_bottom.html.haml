@@ -1,0 +1,13 @@
+%script{:type => "text/javascript"}
+  alert('abc')
+  if (typeof(i18n) == 'undefined') var i18n = {name:'#{t.name}',title_name:'#{t.title_name}',defaults:{},places:{},template:{}};
+  
+  i18n.places = {unknown : '#{t.places.unknown}'};
+  i18n.defaults = {yes : '#{t.defaults.y}', no : '#{t.defaults.n}', maybe : '#{t.defaults.maybe}', dunno : '#{t.defaults.dunno}', no_ts : "#{t.defaults.n_ts}"};
+
+  - if prod?
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();

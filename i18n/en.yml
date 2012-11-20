@@ -1,0 +1,84 @@
+name:           "FFFFFARTSY"
+title_name:     "FFFFFARTSY"
+
+defaults:
+
+
+# --- MODELS ----------------------------------------------
+models:
+  art_pieces:     Art Pieces
+
+
+# --- TEMPLATE TEXT ---------------------------------------
+template:
+  meta:
+    author:           "F.A.T. Lab @ http://fffff.at"
+    description:      ""
+
+  search:
+    placeholder:      "Search..."
+
+  footer:
+    credits:          A <a href="http://fffff.at" rel="follow">F.A.T. Lab</a> project &ndash; Copyfree %1
+
+
+art_pieces:
+  model:
+    format:       'Art Piece Format'
+    gallery:      'Gallery Setup'
+    audience:     'Audience'
+    frame:        'Frame Style'
+
+    formats:
+      image:      'Image'
+      video:      'Video'
+      web_page:   'Web Page'
+
+    galleries:
+      wall:       'Gallery Wall'
+
+    frames:
+      white:        'White Frame'
+      black:        'Black Frame'
+      none:         'No Frame'
+      tv:           'Digital Display'
+      transparent:  'Freestyle'
+
+    audiences:
+      none:         'No Audience'
+      jayz:         'Jay-Z, Art Collector'
+
+  form:
+    heading:      'Free Art.sy &amp; Technology'
+
+    buttons:
+      preview:    'Preview'
+      create:     'Create'
+      continue:   'Continue'
+
+    format:
+      heading:  'What is the media?'
+      
+      image:    'Image'
+      video:    'Video'
+      web_page: 'Web Page'
+
+    piece:
+      heading:  'Information'
+      
+      labels:
+        url:        'URL'
+        width:      'Width'
+        height:     'Height'
+
+    customizations:
+      heading:  'Customizations'
+      labels:
+        frame:      'Frame'
+        gallery:    'Gallery'
+        audience:   'Audience'
+
+
+
+# --- ERRORS ----------------------------------------------
+errors:

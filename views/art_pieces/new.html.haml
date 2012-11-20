@@ -1,0 +1,94 @@
+- url = params[:art_piece][:url] rescue nil
+- width = params[:art_piece][:width] rescue nil
+- height = params[:art_piece][:height] rescue nil
+- gallery = params[:art_piece][:gallery] rescue nil
+- frame = params[:art_piece][:frame] rescue nil
+- audience = params[:art_piece][:audience] rescue nil
+
+
+.rel.c
+
+  = haml :'art_pieces/_gallery'
+
+  #selection
+    %h1= t.art_pieces.form.heading
+
+    %form{:action => '/piece/create', :method => :post}
+      %input#art_piece_format{:type => 'hidden', :name => 'art_piece[format]', :value => @art_piece.format}
+      .step{:'data-step' => 1}
+        %fieldset
+          %legend= t.art_pieces.form.format.heading
+          .row.c
+            .row_items
+              %button{:value => ''}= t.art_pieces.form.format.image
+              %button{:value => ''}= t.art_pieces.form.format.video
+              %button{:value => ''}= t.art_pieces.form.format.web_page
+
+
+      .step{:'data-step' => 2}
+        %fieldset
+          %legend= t.art_pieces.form.piece.heading
+
+          .row.c
+            .row_legend
+              %label{:for => 'art_piece_url'}= t.art_pieces.form.piece.labels.url
+            .row_items
+              %input#art_piece_url{:type => 'text', :name => 'art_piece[url]', :value => url}
+
+          .row.c
+            .row_legend
+              %label{:for => 'art_piece_width'}= t.art_pieces.form.piece.labels.width
+            .row_items
+              %input#art_piece_width{:type => 'text', :name => 'art_piece[width]', :value => width}
+
+          .row.c
+            .row_legend
+              %label{:for => 'art_piece_height'}= t.art_pieces.form.piece.labels.height
+            .row_items
+              %input#art_piece_height{:type => 'text', :name => 'art_piece[height]', :value => height}
+
+        %fieldset.buttons.c
+          %button.art_piece_preview.l= t.art_pieces.form.buttons.preview
+          %button.art_piece_continue.r= t.art_pieces.form.buttons.continue
+
+
+      .step{:'data-step' => 3}
+        %fieldset
+          %legend= t.art_pieces.form.customizations.heading
+
+          - if ArtPiece::GALLERIES.size > 1
+            .row.c
+              .row_legend
+                %label{:for => 'art_piece_gallery'}= t.art_pieces.form.customizations.labels.gallery
+              .row_items
+                %select#art_piece_gallery{:name => 'art_piece[gallery]'}
+                  - ArtPiece::GALLERIES.each do |k,v|
+                    %option{:value => v, :selected => (gallery == v)}= t.art_pieces.model.galleries[ v.to_s ]
+          - else
+            %input{:type => 'hidden', :name => 'art_piece[gallery]', :value => ArtPiece::GALLERIES.keys.first}
+
+          - if ArtPiece::FRAMES.size > 1
+            .row.c
+              .row_legend
+                %label{:for => 'art_piece_frame'}= t.art_pieces.form.customizations.labels.frame
+              .row_items
+                %select#art_piece_frame{:name => 'art_piece[frame]'}
+                  - ArtPiece::FRAMES.each do |k,v|
+                    %option{:value => v, :selected => (frame == v)}= t.art_pieces.model.frames[ v.to_s ]
+          - else
+            %input{:type => 'hidden', :name => 'art_piece[frame]', :value => ArtPiece::FRAMES.keys.first}
+
+          - if ArtPiece::AUDIENCES.size > 1
+            .row.c
+              .row_legend
+                %label{:for => 'art_piece_audience'}= t.art_pieces.form.customizations.labels.audience
+              .row_items
+                %select#art_piece_audience{:name => 'art_piece[audience]'}
+                  - ArtPiece::AUDIENCES.each do |k,v|
+                    %option{:value => v, :selected => (audience == v)}= t.art_pieces.model.audiences[ v.to_s ]
+          - else
+            %input{:type => 'hidden', :name => 'art_piece[audience]', :value => ArtPiece::AUDIENCES.keys.first}
+
+        %fieldset.buttons.c
+          %button.art_piece_preview.l= t.art_pieces.form.buttons.preview
+          %button#art_piece_submit.r= t.art_pieces.form.buttons.create
