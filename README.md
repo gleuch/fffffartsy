@@ -9,6 +9,22 @@ _2012-10-19_
   * Working on first version.
 
 
+### Modifying
+
+If you wish to modify or add some hacks, fork it and issue a pull request.
+
+To get up an running for development:
+
+* Clone the repo.
+* `cp database.yml.sample database.yml`
+* `cp config.yml.sample config.yml`
+* Create a database and update `database.yml` with your info.
+* `bundle install`
+* `rake db:migrate`
+* `shotgun app.rb -p 4567`
+* ...then visit http://localhost:4567
+
+
 ### Credit
 
 A [F.A.T. Lab](http://fffff.at) Project - ([@fffffat](http://twitter.com/fffffat))
