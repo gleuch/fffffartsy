@@ -1,0 +1,11 @@
+development: &dev
+  adapter:  mysql2
+  host:     localhost
+  database: fartsy_dev
+  username: root
+  password: 
+  encoding: utf8
+
+
+test:
+  <<: *dev

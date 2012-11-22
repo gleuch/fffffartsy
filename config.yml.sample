@@ -1,0 +1,12 @@
+development: &local
+
+  cookie_secret:  'SOME_RANDOM_STRING_HERE'
+  analytics_id:   'YOUR UA-******** GOOGLE ANALYTICS CODE NUMBER'
+
+
+staging:
+  <<: *local
+
+
+production:
+  <<: *local
