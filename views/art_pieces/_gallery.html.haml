@@ -12,13 +12,15 @@
   - piece_height ||= 600
 
   - screen_width, screen_height = 375, 281
+  - screen_zoom_ratio = '%0.02f' % (screen_width / piece_width.to_f)
+  - screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
   - # Set default screen dimensions to 16:9 if tv mode
   - if @art_piece.frame_type == 'tv'
-    - screen_height = ((9 * screen_width) / 16.to_f).to_i
+    - screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
+  - elsif !@art_piece.height.blank?
+    - screen_height = (screen_zoom_ratio.to_f * screen_width).to_i rescue 281
 
-  - screen_zoom_ratio = '%0.02f' % (screen_width / piece_width.to_f)
-  - screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
   %style{:type => 'text/css'}
     :plain

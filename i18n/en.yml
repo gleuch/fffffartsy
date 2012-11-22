@@ -55,6 +55,7 @@ art_pieces:
       preview:    'Preview'
       create:     'Create'
       continue:   'Continue'
+      back:       'Back'
 
     format:
       heading:  'What is the media?'

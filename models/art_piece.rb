@@ -24,7 +24,7 @@ class ArtPiece < ActiveRecord::Base
   }
 
   extend FriendlyId
-  friendly_id :slug
+  friendly_id :nice_url, use: :slugged
 
 
 
@@ -35,6 +35,8 @@ class ArtPiece < ActiveRecord::Base
 
   def default=(v); @_default = v; end
   def default; !!@_default; end
+
+  def nice_url; url.gsub(/(http(s)?)(\:\/\/)(www\.)?/i, ''); end
 
 
 protected

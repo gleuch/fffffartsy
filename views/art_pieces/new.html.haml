@@ -6,24 +6,27 @@
 - audience = params[:art_piece][:audience] rescue nil
 
 
-.rel.c
+%script{:type => 'text/javascript'}
+  Fartsy.Preview.formats = #{ArtPiece::FORMATS.to_json};
+  Fartsy.Preview.frames = #{ArtPiece::FRAMES.to_json};
+  Fartsy.Preview.galleries = #{ArtPiece::GALLERIES.to_json};
+  Fartsy.Preview.audiences = #{ArtPiece::AUDIENCES.to_json};
 
+.rel.c
   = haml :'art_pieces/_gallery'
 
   #selection
     %h1= t.art_pieces.form.heading
 
-    %form{:action => '/piece/create', :method => :post}
+    %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 1, :'data-format' => @art_piece.format_type}
       %input#art_piece_format{:type => 'hidden', :name => 'art_piece[format]', :value => @art_piece.format}
       .step{:'data-step' => 1}
         %fieldset
           %legend= t.art_pieces.form.format.heading
           .row.c
             .row_items
-              %button{:value => ''}= t.art_pieces.form.format.image
-              %button{:value => ''}= t.art_pieces.form.format.video
-              %button{:value => ''}= t.art_pieces.form.format.web_page
-
+              - ArtPiece::FORMATS.each do |k,v|
+                %button{:value => k}= t.art_pieces.form.format[v]
 
       .step{:'data-step' => 2}
         %fieldset
@@ -35,22 +38,22 @@
             .row_items
               %input#art_piece_url{:type => 'text', :name => 'art_piece[url]', :value => url}
 
-          .row.c
+          .row.c.hide_for_image.hide_for_video
             .row_legend
               %label{:for => 'art_piece_width'}= t.art_pieces.form.piece.labels.width
             .row_items
               %input#art_piece_width{:type => 'text', :name => 'art_piece[width]', :value => width}
 
-          .row.c
+          .row.c.hide_for_image.hide_for_video
             .row_legend
               %label{:for => 'art_piece_height'}= t.art_pieces.form.piece.labels.height
             .row_items
               %input#art_piece_height{:type => 'text', :name => 'art_piece[height]', :value => height}
 
         %fieldset.buttons.c
-          %button.art_piece_preview.l= t.art_pieces.form.buttons.preview
+          %button.art_piece_back.l= t.art_pieces.form.buttons.back
           %button.art_piece_continue.r= t.art_pieces.form.buttons.continue
-
+          %button.art_piece_preview= t.art_pieces.form.buttons.preview
 
       .step{:'data-step' => 3}
         %fieldset
@@ -63,7 +66,7 @@
               .row_items
                 %select#art_piece_gallery{:name => 'art_piece[gallery]'}
                   - ArtPiece::GALLERIES.each do |k,v|
-                    %option{:value => v, :selected => (gallery == v)}= t.art_pieces.model.galleries[ v.to_s ]
+                    %option{:value => k, :selected => (gallery == v)}= t.art_pieces.model.galleries[ v.to_s ]
           - else
             %input{:type => 'hidden', :name => 'art_piece[gallery]', :value => ArtPiece::GALLERIES.keys.first}
 
@@ -74,7 +77,7 @@
               .row_items
                 %select#art_piece_frame{:name => 'art_piece[frame]'}
                   - ArtPiece::FRAMES.each do |k,v|
-                    %option{:value => v, :selected => (frame == v)}= t.art_pieces.model.frames[ v.to_s ]
+                    %option{:value => k, :selected => (frame == v)}= t.art_pieces.model.frames[ v.to_s ]
           - else
             %input{:type => 'hidden', :name => 'art_piece[frame]', :value => ArtPiece::FRAMES.keys.first}
 
@@ -85,10 +88,11 @@
               .row_items
                 %select#art_piece_audience{:name => 'art_piece[audience]'}
                   - ArtPiece::AUDIENCES.each do |k,v|
-                    %option{:value => v, :selected => (audience == v)}= t.art_pieces.model.audiences[ v.to_s ]
+                    %option{:value => k, :selected => (audience == v)}= t.art_pieces.model.audiences[ v.to_s ]
           - else
             %input{:type => 'hidden', :name => 'art_piece[audience]', :value => ArtPiece::AUDIENCES.keys.first}
 
         %fieldset.buttons.c
-          %button.art_piece_preview.l= t.art_pieces.form.buttons.preview
+          %button.art_piece_back.l= t.art_pieces.form.buttons.back
           %button#art_piece_submit.r= t.art_pieces.form.buttons.create
+          %button.art_piece_preview= t.art_pieces.form.buttons.preview
