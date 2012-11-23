@@ -7,6 +7,7 @@ class ArtPiece < ActiveRecord::Base
   FRAMES = {
     0 => 'white',
     1 => 'black',
+    5 => 'gold',
     2 => 'none',
     3 => 'tv',
     4 => 'transparent',

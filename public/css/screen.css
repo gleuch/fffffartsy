@@ -10,6 +10,7 @@
 #gallery[data-frame=black] #artwork {background: rgba(23,18,19,1);}
 #gallery[data-frame=none] #artwork {background: transparent; padding: 0;}
 #gallery[data-frame=tv] #artwork {padding-bottom: 25px; background: rgba(23,18,19,1) url(../images/tv_frame.png) bottom center no-repeat;}
+#gallery[data-frame=gold] #artwork {padding: 15px; border: 5px solid rgba(248,196,13,1); background: rgba(212,131,13,1); box-shadow: inset 0 0 35px rgba(72,17,0,1), 0 5px 8px rgba(12,8,6,.32);}
 #gallery[data-frame=transparent] #artwork {background: none; box-shadow: none;}
 
 #art_piece_form[data-format=image] .hide_for_image {display: none;}

@@ -43,6 +43,7 @@ art_pieces:
       none:         'No Frame'
       tv:           'Digital Display'
       transparent:  'Freestyle'
+      gold:         'Gold Frame'
 
     audiences:
       none:         'No Audience'
