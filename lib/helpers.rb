@@ -58,7 +58,7 @@ helpers do
 
       "<style type=\"text/css\", media=\"#{v[:media]}\">
         #artwork {width: #{screen_width}px; height: #{screen_height}px; top: #{pos_y}px;}
-        #artwork iframe {width: #{screen_zoom_pct}%; height: #{screen_zoom_pct}%; zoom: #{screen_zoom_ratio}; -moz-transform: scale(#{screen_zoom_ratio}); -moz-transform-origin: 0 0; -o-transform: scale(#{screen_zoom_ratio}); -o-transform-origin: 0 0; -webkit-transform: scale(#{screen_zoom_ratio}); -webkit-transform-origin: 0 0;}
+        #artwork iframe {width: #{screen_zoom_pct}%; height: #{screen_zoom_pct}%; zoom: #{screen_zoom_ratio}; transform: scale(#{screen_zoom_ratio}); transform-origin: 0 0; -moz-transform: scale(#{screen_zoom_ratio}); -moz-transform-origin: 0 0; -o-transform: scale(#{screen_zoom_ratio}); -o-transform-origin: 0 0; -webkit-transform: scale(#{screen_zoom_ratio}); -webkit-transform-origin: 0 0;}
         #gallery {background-size: #{bg_width}px auto; background-position: center #{bg_pos_y}px;}
        </style>"
     else
@@ -85,10 +85,11 @@ helpers do
         :ratio => 0.58,
         :media => 'only screen and (max-width: 450px), only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2)'
       },
-      :screen_mobile => {
-        :ratio => 0.58,
-        :media => 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
-      }
+      # :screen_mobile => {
+      #   :ratio => 0.58,
+      #   :css => '#gallery {background-color: #ff0;}',
+      #   :media => 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
+      # }
     }
   end
 

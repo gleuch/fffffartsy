@@ -129,7 +129,7 @@ var Fartsy = {
       var x = (sw / w), p = (100 / x), sh = Math.round(h * (r && r != '' ? r : x));
       if (sh <= 300) {
         jQuery('#artwork').css({'width' : sw +'px', 'height' : sh +'px'});
-        jQuery('#artwork iframe').css({'width' : p.toFixed(2)+'%', 'height' : p.toFixed(2)+'%', 'zoom' : x.toFixed(2), '-moz-transform' : 'scale('+ x.toFixed(2) +')', '-o-transform' : 'scale('+ x.toFixed(2) +')', '-webkit-transform' : 'scale('+ x.toFixed(2) +')'});
+        jQuery('#artwork iframe').css({'width' : p.toFixed(2)+'%', 'height' : p.toFixed(2)+'%', 'zoom' : x.toFixed(2), 'transform' : 'scale('+ x.toFixed(2) +')', '-moz-transform' : 'scale('+ x.toFixed(2) +')', '-o-transform' : 'scale('+ x.toFixed(2) +')', '-webkit-transform' : 'scale('+ x.toFixed(2) +')'});
       } else {
         sw = Math.round(sw * (280 / sh));
         Fartsy.Preview.set_dimensions(w,h,null,sw);
