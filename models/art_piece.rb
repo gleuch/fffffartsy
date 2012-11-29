@@ -39,6 +39,8 @@ class ArtPiece < ActiveRecord::Base
 
   def nice_url; url.gsub(/(http(s)?)(\:\/\/)(www\.)?/i, ''); end
 
+  def piece_url; "/pieces/#{self.id}/#{self.slug}"; end
+
 
 protected
 

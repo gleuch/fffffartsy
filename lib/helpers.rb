@@ -34,7 +34,30 @@ helpers do
     @art_piece.default = true
   end
 
-
+  def media_sizes
+    {
+      :screen_normal => {
+        :ratio => 1,
+        :media => 'only screen'
+      },
+      :screen_small => {
+        :ratio => 0.8,
+        :media => 'only screen and (max-width: 650px), only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
+      },
+      :screen_smaller => {
+        :ratio => 0.69,
+        :media => 'only screen and (max-width: 550px), only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 2)'
+      },
+      :screen_smallest => {
+        :ratio => 0.58,
+        :media => 'only screen and (max-width: 450px), only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2)'
+      },
+      :screen_mobile => {
+        :ratio => 0.58,
+        :media => 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
+      }
+    }
+  end
 
 # --- Templates ---------------------------------------------------------------
 

@@ -14,9 +14,8 @@ APP_MODE  ||= 'webapp'
 DEBUG     ||= false
 
 
-
 # REQUIRE MODULES/GEMS
-%w{yaml crack json configatron active_record mysql2 friendly_id}.each{|r| require r}
+%w{yaml crack json configatron active_record mysql2 friendly_id will_paginate will_paginate/active_record}.each{|r| require r}
 
 
 # READ CONFIG

@@ -68,6 +68,7 @@ GEM
       sinatra (~> 1.3)
     tilt (1.3.3)
     tzinfo (0.3.35)
+    will_paginate (3.0.3)
     yamler (0.1.0)
 
 PLATFORMS
@@ -92,3 +93,4 @@ DEPENDENCIES
   sinatra-flash (= 0.3.0)
   sinatra-r18n (= 1.1.2)
   sinatra-respond_to (= 0.8.0)
+  will_paginate (= 3.0.3)

@@ -21,6 +21,7 @@ gem "sinatra-flash",            "0.3.0"
 gem "sinatra-respond_to",       "0.8.0"
 gem "sinatra-content-for",      "0.2",      :git => "git://github.com/gleuch/sinatra-content-for.git"
 gem "sinatra-r18n",             "1.1.2"
+gem "will_paginate",            "3.0.3"
 
 
 # ------------------------------------------------

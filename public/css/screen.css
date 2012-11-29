@@ -1,8 +1,8 @@
 #header, #footer {display: none;}
 
 
-#gallery {position: absolute; z-index: 1000; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 450px no-repeat;}
-#artwork {position: absolute; z-index: 1001; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+#gallery {position: absolute; z-index: 1000; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 450px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
+#artwork {position: absolute; z-index: 1001; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
 #artwork iframe {width: 100%; height: 100%; z-index: 1002; overflow: hidden; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,1);}
 #glass {position: absolute; z-index: 1010; top: 80px; text-indent: -99999px; left: 0; right: 0; width: 400px; height: 250px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0);}
 
@@ -17,5 +17,24 @@
 #art_piece_form[data-format=video] .hide_for_video {display: none;}
 #art_piece_form[data-format=web_page] .hide_for_web_page {display: none;}
 
+#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 1020; width: 550px; min-height: 200px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.72); box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
+#selection h1 {text-align: center; font-size: 2.8em; padding: 0 0 15px 0; margin: 0 0 25px 0; border-bottom: 1px solid rgba(255,255,255,.32); text-shadow: 0 1px 2px rgba(0,0,0,.32);}
+#selection fieldset legend {display: block; font-weight: bold; font-size: 2.0em; padding: 0 0 15px 0; text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,.32);}
+#selection fieldset.buttons {margin: 15px 0 0 0; padding: 15px 0 10px 0; border-top: 1px solid rgba(255,255,255,.32); text-align: center;}
+#selection fieldset .row {padding: 10px 0;}
+#selection fieldset .row .row_label {clear: none; float: left; width: 85px; padding: 9px 15px 0 0; text-align: right; text-shadow: 0 1px 2px rgba(0,0,0,.32);}
+#selection fieldset .row .row_label label {font-size: 1.7em; font-weight: bold;}
+#selection fieldset .row .row_items {padding: 0 0 0 100px;}
+#selection fieldset .row .row_items input[type=text] {padding: 4px 5px; margin: 0; width: 350px; background: rgba(255,255,255,.82); color: rgba(0,0,0,.82); font-size: 1.5em; border: 1px solid rgba(0,0,0,1); box-shadow: 0 3px 5px rgba(0,0,0,.24);}
+#selection fieldset .row .row_items input[type=text]:focus {background-color: rgba(255,255,255,1); color: rgba(0,0,0,1);}
+#selection fieldset .row .row_items select {display: inline-block; padding: 4px 5px; margin: 2px 0 0 0; width: 350px; background: rgba(255,255,255,.82); color: rgba(0,0,0,.82); font-size: 1.5em; border: 1px solid rgba(0,0,0,1); box-shadow: 0 3px 5px rgba(0,0,0,.24);}
+#selection fieldset .row .row_items select:focus {background-color: rgba(255,255,255,1); color: rgba(0,0,0,1);}
+#selection .step[data-step='1'] .row_items {text-align: center; padding: 0;}
+#selection .step button, #selection .step input[type=submit] {display: inline-block; font-weight: bold; font-size: 1.8em; margin: 0 5px; padding: 5px 10px; background: rgba(255,255,100,1); border: none; box-shadow: 0 3px 5px rgba(0,0,0,.12); -webkit-transition: background-color .2s ease-in;}
+#selection .step button:hover, #selection .step input[type=submit]:hover, #selection .step button:focus, #selection .step input[type=submit]:focus {background: rgba(255,0,255,1);}
+#selection fieldset .piece_dimension {width: 230px;}
+#selection fieldset .piece_dimension .row_items input[type=text], #selection fieldset .piece_dimension .row .row_items select {width: 120px;}
 
-#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 1020; width: 550px; min-height: 200px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.64); box-shadow: 0 5px 8px rgba(12,8,6,.32);}
+#content_area {padding: 30px 30px 20px 30px;}
+#content_area .pagination {font-size: 1.2em; padding: 5px 0 10px 0;}
+#content_area .pagination .current {font-weight: bold;}

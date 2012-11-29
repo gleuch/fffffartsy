@@ -7,27 +7,32 @@
   - #  4. Set transform/zoom to this percentage (e.g. zoom: .75; [...])
   - #  5. Set iframe width / height to 100 / ratio (e.g. 100 / .75 = 133.33 = 133%)
 
-  - piece_width, piece_height = @art_piece.width, @art_piece.height
-  - piece_width ||= 800
-  - piece_height ||= 600
+  - media_sizes.each do |k,v|
+    - piece_width, piece_height = @art_piece.width, @art_piece.height
+    - piece_width ||= 800
+    - piece_height ||= 600
 
-  - screen_width, screen_height = 375, 281
-  - screen_zoom_ratio = '%0.02f' % (screen_width / piece_width.to_f)
-  - screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
+    - orig_screen_width, orig_screen_height = 375, 281
+    - screen_width, screen_height = (orig_screen_width * v[:ratio]).to_i, (orig_screen_height * v[:ratio]).to_i
+    - screen_zoom_ratio = '%0.02f' % ((screen_width / piece_width.to_f))
+    - screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
-  - # Set default screen dimensions to 16:9 if tv mode
-  - if @art_piece.frame_type == 'tv'
-    - screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
-  - elsif !@art_piece.height.blank?
-    - screen_height = (screen_zoom_ratio.to_f * screen_width).to_i rescue 281
+    - # Set default screen dimensions to 16:9 if tv mode
+    - if @art_piece.frame_type == 'tv'
+      - screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
+    - elsif !@art_piece.height.blank?
+      - screen_height = (screen_zoom_ratio.to_f * orig_screen_width).to_i rescue 281
 
+    - bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).to_i
+    - bg_pos_y = (450 * (v[:bg_ratio] || v[:ratio])).to_i
+    - pos_y = (80 * v[:ratio]).to_i
 
-  %style{:type => 'text/css'}
-    :plain
-      @media only screen {
-        #artwork {width: #{screen_width}px; height: #{screen_height}px;}
+    - # TODO background size
+    %style{:type => 'text/css', :media => v[:media]}
+      :plain
+        #artwork {width: #{screen_width}px; height: #{screen_height}px; top: #{pos_y}px;}
         #artwork iframe {width: #{screen_zoom_pct}%; height: #{screen_zoom_pct}%; zoom: #{screen_zoom_ratio}; -moz-transform: scale(#{screen_zoom_ratio}); -moz-transform-origin: 0 0; -o-transform: scale(#{screen_zoom_ratio}); -o-transform-origin: 0 0; -webkit-transform: scale(#{screen_zoom_ratio}); -webkit-transform-origin: 0 0;}
-      }
+        #gallery {background-size: #{bg_width}px auto; background-position: center #{bg_pos_y}px;}
 
 
 #gallery{:'data-frame' => @art_piece.frame_type, :'data-gallery' => @art_piece.gallery_type, :'data-audience' => @art_piece.audience_type, :'data-format' => @art_piece.format_type}

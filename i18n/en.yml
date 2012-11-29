@@ -49,8 +49,17 @@ art_pieces:
       none:         'No Audience'
       jayz:         'Jay-Z, Art Collector'
 
+  index:
+    heading:      'Free Art[sy] &amp; Technology'
+
+    art_piece:
+      view:         'View Piece &raquo;'
+      missing_url:  '<em>&ndash; redacted &ndash;</em>'
+
+    no_results:   'Aw, darn. No one wants to show their free art.'
+
   form:
-    heading:      'Free Art.sy &amp; Technology'
+    heading:      'Free Art[sy] &amp; Technology'
 
     buttons:
       preview:    'Preview'
@@ -66,7 +75,10 @@ art_pieces:
       web_page: 'Web Page'
 
     piece:
-      heading:  'Information'
+      heading:
+        image:      'Image Art Piece Information'
+        web_page:   'Web Page Art Piece Information'
+        video:      'Video Art Piece Information'
       
       labels:
         url:        'URL'
@@ -74,7 +86,10 @@ art_pieces:
         height:     'Height'
 
     customizations:
-      heading:  'Customizations'
+      heading:
+        image:      'Image Art Piece Customizations'
+        web_page:   'Web Page Art Piece Customizations'
+        video:      'Video Art Piece Customizations'
       labels:
         frame:      'Frame'
         gallery:    'Gallery'

@@ -1,0 +1,21 @@
+#content_area
+  %h1
+    %a{:href => '/'}= t.art_pieces.index.heading
+
+  - unless @art_pieces.blank?
+    %ul#art_list
+      - @art_pieces.each do |p|
+        %li{:'data-id' => p.id, :'data-url' => p.url, :'data-frame' => p.frame_type, :'data-gallery' => p.gallery_type, :'data-audience' => p.audience_type, :'data-format' => p.format_type}
+          %strong #{t.art_pieces.form.format[ p.format_type ]}:
+          - unless p.url.blank?
+            %a{:href => p.piece_url}= p.nice_url
+            %br
+            %a.button{:href => p.piece_url}= t.art_pieces.index.art_piece.view
+          - else
+            = t.art_pieces.index.art_piece.missing_url
+
+    .pagination
+      = will_paginate(@art_pieces)
+
+  - else
+    %p.tc= t.art_pieces.index.no_results

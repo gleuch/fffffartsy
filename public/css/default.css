@@ -1,2 +1,71 @@
-html, body {margin: 0; padding: 0; background: rgba(223,219,216,1);}
-div, iframe {margin: 0; padding: 0;}
+/* --- the @gleuch default setup - updated 2011-06-07 ------------------------- */
+
+
+html, body, header, hgroup, nav, article, section, details, aside, footer, figure, figcaption, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+header, hgroup, nav, article, section, details, aside, footer {display: block;}
+param {display: none;}
+html, body {height: 100%;}
+html * {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;}
+body {line-height: 1.0em; font-size: 62.5%; margin: 0; padding: 0; background: rgba(223,219,216,1);}
+body ::selection {background: rgba(255,0,255,.64); color: rgba(0,0,0,1); text-shadow: 0 1px 2px rgba(0,0,0,.12);}
+dl dt {font-weight: bold;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
+:focus {outline: 0;}
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+table {border-collapse: collapse; border-spacing: 0; font-size: 1.0em;}
+thead, tbody, tr, th, td {font-size: 1.0em; line-height: 1.0em;}
+body, h1, h2, h3, h4, h5, h6 {font-family: 'franklin-gothic-urw', Arial, Helvetica, Verdana, sans-serif; line-height: 1.2em;}
+h1, h2, h3, h4, h5, h6, input, select, textarea, p, blockquote, li, dt, dd {letter-spacing: 0;}
+p, blockquote, q, ins, li, dt, dd, input, select, textarea, button {font-size: 1.3em; font-family: 'adelle-sans', Arial, Helvetica, Verdana, sans-serif; color: rgba(0,0,0,1); line-height: 1.25em;}
+ins {line-height: 1.0em; font-size: 1.0em;}
+var, code, samp {display: inline-block; padding: 1px 5px; margin: -1px 0; font-size: 1.0em; color: rgba(33,33,33,1); line-height: 1.25em; font-family: Courier, 'Courier New', monospace; font-style: normal; background: rgba(0,0,0,.08); box-shadow: 0 1px 1px rgba(0,0,0,.24);}
+code {display: block; font-size: 1.3em; padding: 0; margin: 0;}
+blockquote p, blockquote blockquote, li li, p code {font-size: 1.0em;}
+dt {font-weight: bold;}
+
+a {color: rgba(33,33,33,1); text-decoration: none;}
+a:focus, a:hover {color: rgba(0,0,0,1);}
+
+dl,ul,h1,h2,h3,h4,h5,h6,p {padding: 0 0 10px 0;}
+ul li {padding: 0 0 5px 0;}
+h1 {font-size: 2.4em;}
+h2 {font-size: 2.0em;}
+h3 {font-size: 1.8em;}
+h4 {font-size: 1.6em;}
+h5 {font-size: 1.5em;}
+h6 {font-size: 1.4em;}
+
+h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {line-height: 1.0em; vertical-align: top;}
+
+
+/* 
+  --- DEFAULT STYLES ---------------------------------------------------------
+
+  THESE ARE RESERVED CLASSNAMES!
+*/
+.hide {display: none;}
+.l {clear: none; float: left;}
+.r {clear: none; float: right;}
+.c {clear: both; float: none;}
+.rel {position: relative;}
+.abs {position: absolute; z-index: 2;}
+.c:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.sanserif {font-family: 'adelle-sans', Arial, Helvetica, sans-serif;}
+.serif {font-family: 'Times New Roman', Times, Georgia, sans-serif;}
+.b {font-weight: bold;}
+.nb {font-weight: normal;}
+.i {font-style: italic;}
+.tl {text-align: left;}
+.tr {text-align: right;}
+.tc {text-align: center;}
+.vb {vertical-align: bottom;}
+.vm {vertical-align: middle;}
+.vt {vertical-align: top;}
+.vl {vertical-align: baseline;}
+.to {text-overflow: ellipsis; overflow-x: hidden; -ms-text-overflow: ellipsis;}
+.to.nw {white-space: nowrap; overflow-x: auto; overflow: hidden;}
+
+i.icon {display: inline-block; font-style: normal;}

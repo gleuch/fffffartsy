@@ -13,7 +13,12 @@ def render_piece
   end
 end
 
-get "/pieces/:id/:name" do
+get "/pieces" do
+  @art_pieces = ArtPiece.order('created_at desc').paginate(:page => params[:page] || 1, :per_page => 50)
+  haml :'art_pieces/index'
+end
+
+get "/pieces/:id/:slug" do
   render_piece
 end
 
@@ -32,7 +37,7 @@ post "/piece/create" do
   respond_to do |format|
     format.html {
       if results.call
-        redirect "/pieces/#{@art_piece.id}/#{@art_piece.slug}"
+        redirect @art_piece.piece_url
       else
         haml :'art_pieces/new'
       end
