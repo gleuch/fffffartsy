@@ -34,6 +34,39 @@ helpers do
     @art_piece.default = true
   end
 
+  def set_media_size(p,v,sw=nil,i=0)
+    piece_width, piece_height = p.width, p.height
+    piece_width ||= 800
+    piece_height ||= 600
+
+    orig_screen_width, orig_screen_height = (sw || 375), 281
+    screen_width, screen_height = (orig_screen_width * v[:ratio]).to_i, (orig_screen_height * v[:ratio]).to_i
+    screen_zoom_ratio = '%0.02f' % ((screen_width / piece_width.to_f))
+    screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
+
+    # Set default screen dimensions to 16:9 if tv mode
+    if p.frame_type == 'tv'
+      screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
+    elsif !p.height.blank?
+      screen_height = (screen_zoom_ratio.to_f * piece_height).to_i rescue 281
+    end
+
+    if screen_height <= (300 * v[:ratio]).to_i
+      bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).to_i
+      bg_pos_y = (450 * (v[:bg_ratio] || v[:ratio])).to_i
+      pos_y = (80 * v[:ratio]).to_i
+
+      "<style type=\"text/css\", media=\"#{v[:media]}\">
+        #artwork {width: #{screen_width}px; height: #{screen_height}px; top: #{pos_y}px;}
+        #artwork iframe {width: #{screen_zoom_pct}%; height: #{screen_zoom_pct}%; zoom: #{screen_zoom_ratio}; -moz-transform: scale(#{screen_zoom_ratio}); -moz-transform-origin: 0 0; -o-transform: scale(#{screen_zoom_ratio}); -o-transform-origin: 0 0; -webkit-transform: scale(#{screen_zoom_ratio}); -webkit-transform-origin: 0 0;}
+        #gallery {background-size: #{bg_width}px auto; background-position: center #{bg_pos_y}px;}
+       </style>"
+    else
+      adjusted_screen_width = (screen_width * (280 / screen_height.to_f)).to_i
+      set_media_size(p,v,adjusted_screen_width,1) unless i > 0
+    end
+  end
+
   def media_sizes
     {
       :screen_normal => {

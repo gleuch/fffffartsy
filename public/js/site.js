@@ -15,12 +15,15 @@ var Fartsy = {
       if (jQuery('#art_piece_form')) {
         Fartsy.Preview.step_to();
 
+        jQuery('.step select, .step input#art_piece_url, .step .piece_dimension input[type=text]').on('change', function() {Fartsy.Preview.preview();});
+
         /* Step 1 actions */
         jQuery('.step[data-step=1] button').on('click', function() {
           var f = jQuery(this).val();
           jQuery('#art_piece_format').val(f);
           jQuery('#art_piece_form').attr('data-format', Fartsy.Preview.formats[f]);
           Fartsy.Preview.step_to(2);
+          setTimeout(function() {jQuery('#art_piece_url').focus();}, 100);
           return false;
         });
 
@@ -108,11 +111,11 @@ var Fartsy = {
 
         } else if (Fartsy.Preview.formats[f] == 'video') {
           x.attr('src', u);
-          if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h,t);
+          if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h);
 
         } else {
           x.attr('src', u);
-          if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h,t);
+          if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h);
         }
 
       } else {
@@ -123,9 +126,14 @@ var Fartsy = {
     set_dimensions : function(w,h,r,sw) {
       if (!(w && w != '') || !(h && h != '')) return false;
       if (!sw || sw == '') sw = 375;
-      var x = (sw / w).toFixed(2), p = (100 / x).toFixed(2), sh = Math.round(sw * (r && r != '' ? r : x));
-      jQuery('#artwork').css({'width' : sw +'px', 'height' : sh +'px'});
-      jQuery('#artwork iframe').css({'width' : p+'%', 'height' : p+'%', 'zoom' : x, '-moz-transform' : 'scale('+ x +')', '-o-transform' : 'scale('+ x +')', '-webkit-transform' : 'scale('+ x +')'});
+      var x = (sw / w), p = (100 / x), sh = Math.round(h * (r && r != '' ? r : x));
+      if (sh <= 300) {
+        jQuery('#artwork').css({'width' : sw +'px', 'height' : sh +'px'});
+        jQuery('#artwork iframe').css({'width' : p.toFixed(2)+'%', 'height' : p.toFixed(2)+'%', 'zoom' : x.toFixed(2), '-moz-transform' : 'scale('+ x.toFixed(2) +')', '-o-transform' : 'scale('+ x.toFixed(2) +')', '-webkit-transform' : 'scale('+ x.toFixed(2) +')'});
+      } else {
+        sw = Math.round(sw * (280 / sh));
+        Fartsy.Preview.set_dimensions(w,h,null,sw);
+      }
     }
   }
 
