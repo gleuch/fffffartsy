@@ -26,11 +26,16 @@ helpers do
 # --- Art Pieces --------------------------------------------------------------
 
   def default_art_piece
-    @art_piece = ArtPiece.new(
-      :width => 500, :height => 375,
-      :url => 'http://fffff.at/files/2011/08/digital-purchase-takedown-notice-500x375.png?e83a2c',
-      :format => 0, :frame => 0
-    )
+    pieces = [
+      {:width => 500, :height => 375, :format => 0, :frame => 0, :url => 'http://fffff.at/files/2011/08/digital-purchase-takedown-notice-500x375.png?e83a2c'},
+      {:width => 300, :height => 300, :format => 0, :frame => 0, :url => 'https://twimg0-a.akamaihd.net/profile_images/1094166180/t.jpg'},
+      {:width => 720, :height => 480, :format => 0, :frame => 0, :url => 'http://www.evan-roth.com/photos//data/dlectricity-2012/web/thelegacyliveson-shot2-nlz-720px.gif'},
+      {:width => 323, :height => 500, :format => 0, :frame => 0, :url => 'http://fffff.at/files/2012/06/one_of_-323x500.jpg?e83a2c'},
+      {:width => 1500, :height => 1000, :format => 0, :frame => 0, :url => 'http://datenform.de/blog/wp-content/uploads/2012/02/OI-bright-DAM-1.jpg'},
+      {:width => 600, :height => 450, :format => 0, :frame => 0, :url => 'http://fffff.at/fuckflickr/data/randy/web/cassette.jpg?e83a2c'},
+    ]
+    r = rand(pieces.length)
+    @art_piece = ArtPiece.new(pieces[r])
     @art_piece.default = true
   end
 

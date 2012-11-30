@@ -1,4 +1,6 @@
-- url = "/pieces/#{@art_piece.id}/image" if @art_piece.format_type == 'image'
+- if @art_piece.format_type == 'image'
+  - url = "/pieces/#{@art_piece.id}/image" unless @art_piece.new_record?
+  - url ||= "/pieces/preview/image?url=#{CGI.escape(@art_piece.url)}"
 - url ||= @art_piece.url
 
 
