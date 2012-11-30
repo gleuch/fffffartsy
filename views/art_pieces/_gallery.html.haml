@@ -1,12 +1,8 @@
-- content_for :css do
-  - #  HOW-TO CALCULATE CSS TRANSFORMATION RATIO:
-  - #  ---------------------------------------------------------------------------
-  - #  1. Determine artwork frame size (e.g. 500x374)
-  - #  2. Determine artwork actual size (src for iframe -- e.g. 375x281)
-  - #  3. Get ratio of actual size to frame size (e.g. width: 375/500 = .75)
-  - #  4. Set transform/zoom to this percentage (e.g. zoom: .75; [...])
-  - #  5. Set iframe width / height to 100 / ratio (e.g. 100 / .75 = 133.33 = 133%)
+- url = "/pieces/#{@art_piece.id}/image" if @art_piece.format_type == 'image'
+- url ||= @art_piece.url
 
+
+- content_for :css do
   - media_sizes.each do |k,v|
     = set_media_size(@art_piece, v)
 
@@ -17,4 +13,5 @@
 
   / THE ARTWORK
   #artwork
-    %iframe{:src => @art_piece.url, :frameborder => "0", :border => "0", :scrolling => "no"}
+    #nail.c
+      %iframe{:src => url, :frameborder => "0", :border => "0", :scrolling => "no"}

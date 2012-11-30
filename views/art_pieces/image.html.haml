@@ -1,0 +1,5 @@
+- unless @art_piece.blank?
+  %img{:src => @art_piece.url, :alt => '', :title => '', :width => @art_piece.width, :height => @art_piece.height}
+
+- else
+  %img{:src => params[:url], :alt => '', :title => ''}

@@ -103,7 +103,7 @@ var Fartsy = {
           var i = new Image();
           i.src = u;
           i.onload = function() {
-            x.attr('src', u);
+            x.attr('src', '/pieces/preview/image?url='+ encodeURI(u));
             jQuery('#art_piece_width').val(i.width);
             jQuery('#art_piece_height').val(i.height);
             Fartsy.Preview.set_dimensions(i.width, i.height, t);

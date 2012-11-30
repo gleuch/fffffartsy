@@ -25,7 +25,7 @@
     %meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=0"}
     %link{:rel => "stylesheet", :type => "text/css", :href => "/css/default.css"}
     %link{:rel => "stylesheet", :type => "text/css", :href => "/css/screen.css", :media => "only screen"}
-    - #%link{:rel => "stylesheet", :type => "text/css", :href => "/css/mobile.css", :media => "only screen and (max-width: 650px), only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/mobile.css", :media => "only screen"}
     = yield_content(:css) if content_for?(:css)
 
     %script{:type => "text/javascript", :src => "/js/jquery-1.8.3.min.js"}

@@ -1,10 +1,13 @@
 #header, #footer {display: none;}
 
+body {max-width: 100%; overflow: hidden; -webkit-transform: transform3d(0,0,0); -webkit-perspective: 1000;}
 
-#gallery {position: absolute; z-index: 1000; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 450px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
-#artwork {position: absolute; z-index: 1001; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
-#artwork iframe {width: 100%; height: 100%; z-index: 1002; overflow: hidden; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,1);}
-#glass {position: absolute; z-index: 1010; top: 80px; text-indent: -99999px; left: 0; right: 0; width: 400px; height: 250px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0);}
+
+#gallery {position: absolute; z-index: 0; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 450px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
+#artwork {position: absolute; z-index: 1; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); overflow: hidden; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
+#artwork #nail {width: 100%; height: 100%; overflow: hidden !important;}
+#artwork iframe {width: 100%; height: 100%; overflow: hidden; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,1);}
+#glass {position: absolute; z-index: 2; top: 80px; text-indent: -99999px; left: 0; right: 0; width: 400px; height: 250px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0);}
 
 #gallery[data-frame=white] #artwork {background: rgba(255,255,255,1);}
 #gallery[data-frame=black] #artwork {background: rgba(23,18,19,1);}
@@ -17,7 +20,7 @@
 #art_piece_form[data-format=video] .hide_for_video {display: none;}
 #art_piece_form[data-format=web_page] .hide_for_web_page {display: none;}
 
-#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 1020; width: 550px; min-height: 200px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.72); box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
+#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 10; width: 550px; min-height: 200px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.72); box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
 #selection h1 {text-align: center; font-size: 2.8em; padding: 0 0 15px 0; margin: 0 0 25px 0; border-bottom: 1px solid rgba(255,255,255,.32); text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset legend {display: block; font-weight: bold; font-size: 2.0em; padding: 0 0 15px 0; text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset.buttons {margin: 15px 0 0 0; padding: 15px 0 10px 0; border-top: 1px solid rgba(255,255,255,.32); text-align: center;}

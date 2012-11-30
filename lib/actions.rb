@@ -5,6 +5,7 @@ def render_piece
     raise ActiveRecord::RecordNotFound if @art_piece.blank?
   }
 
+  
   respond_to do |format|
     format.html {
       results.call
@@ -14,8 +15,36 @@ def render_piece
 end
 
 get "/pieces" do
-  @art_pieces = ArtPiece.order('created_at desc').paginate(:page => params[:page] || 1, :per_page => 50)
-  haml :'art_pieces/index'
+  results = Proc.new {
+    @art_pieces = ArtPiece.order('created_at desc').paginate(:page => params[:page] || 1, :per_page => 50)
+  }
+
+  respond_to do |format|
+    format.html {
+      results.call
+      haml :'art_pieces/index'
+    }
+  end
+end
+
+# Helps prevent weird padding issue with images inside iframes (firefox)
+get "/pieces/:id/image" do
+  results = Proc.new {
+    if params[:id] == 'preview'
+      raise ActiveRecord::RecordNotFound if params[:url].blank?
+    else
+      @art_piece = ArtPiece.find(params[:id]) rescue nil
+      raise ActiveRecord::RecordNotFound if @art_piece.blank?
+      raise ActiveRecord::RecordNotFound if @art_piece.format_type != 'image'
+    end
+  }
+
+  respond_to do |format|
+    format.html {
+      results.call
+      haml :'art_pieces/image'
+    }
+  end
 end
 
 get "/pieces/:id/:slug" do

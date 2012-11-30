@@ -35,6 +35,14 @@ helpers do
   end
 
   def set_media_size(p,v,sw=nil,i=0)
+    #  HOW-TO CALCULATE CSS TRANSFORMATION RATIO:
+    #  ---------------------------------------------------------------------------
+    #  1. Determine artwork frame size (e.g. 500x374)
+    #  2. Determine artwork actual size (src for iframe -- e.g. 375x281)
+    #  3. Get ratio of actual size to frame size (e.g. width: 375/500 = .75)
+    #  4. Set transform/zoom to this percentage (e.g. zoom: .75; [...])
+    #  5. Set iframe width / height to 100 / ratio (e.g. 100 / .75 = 133.33 = 133%)
+
     piece_width, piece_height = p.width, p.height
     piece_width ||= 800
     piece_height ||= 600
@@ -56,9 +64,12 @@ helpers do
       bg_pos_y = (450 * (v[:bg_ratio] || v[:ratio])).to_i
       pos_y = (80 * v[:ratio]).to_i
 
+      # puts screen_zoom_pct
+
       "<style type=\"text/css\", media=\"#{v[:media]}\">
+        #{v[:css]}
         #artwork {width: #{screen_width}px; height: #{screen_height}px; top: #{pos_y}px;}
-        #artwork iframe {width: #{screen_zoom_pct}%; height: #{screen_zoom_pct}%; zoom: #{screen_zoom_ratio}; transform: scale(#{screen_zoom_ratio}); transform-origin: 0 0; -moz-transform: scale(#{screen_zoom_ratio}); -moz-transform-origin: 0 0; -o-transform: scale(#{screen_zoom_ratio}); -o-transform-origin: 0 0; -webkit-transform: scale(#{screen_zoom_ratio}); -webkit-transform-origin: 0 0;}
+        #artwork iframe {width: #{screen_zoom_pct}%; height: #{screen_zoom_pct}%; zoom: #{screen_zoom_ratio}; transform: scale(#{screen_zoom_ratio}); transform-origin: left top; -moz-transform: scale(#{screen_zoom_ratio}); -moz-transform-origin: left top; -o-transform: scale(#{screen_zoom_ratio}); -o-transform-origin: left top; -webkit-transform: scale3d(#{screen_zoom_ratio},#{screen_zoom_ratio},1); -webkit-transform-origin: left top; -webkit-perspective: #{screen_zoom_pct.to_i};}
         #gallery {background-size: #{bg_width}px auto; background-position: center #{bg_pos_y}px;}
        </style>"
     else
@@ -75,21 +86,20 @@ helpers do
       },
       :screen_small => {
         :ratio => 0.8,
-        :media => 'only screen and (max-width: 650px), only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
+        :media => 'only screen and (max-width: 650px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
       },
       :screen_smaller => {
         :ratio => 0.69,
-        :media => 'only screen and (max-width: 550px), only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 2)'
+        :media => 'only screen and (max-width: 550px)'#', only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 2)'
       },
       :screen_smallest => {
-        :ratio => 0.58,
-        :media => 'only screen and (max-width: 450px), only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2)'
+        :ratio => 0.4,
+        :media => 'only screen and (max-width: 450px)'#', only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2)'
       },
-      # :screen_mobile => {
-      #   :ratio => 0.58,
-      #   :css => '#gallery {background-color: #ff0;}',
-      #   :media => 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
-      # }
+      :screen_mobile => {
+        :ratio => 0.4,
+        :media => 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
+      }
     }
   end
 

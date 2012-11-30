@@ -1,0 +1,22 @@
+@media only screen and (max-width: 650px) {
+  #gallery #artwork {padding: 17px;}
+  #gallery[data-frame=gold] #artwork {padding: 9px; border-size: 4px;}
+  #gallery #glass {width: 250px;}
+}
+
+@media only screen and (max-width: 550px) {
+  #gallery #artwork {padding: 15px;}
+  #gallery[data-frame=gold] #artwork {padding: 8px; border-size: 3px;}
+  #gallery #glass {width: 250px;}
+}
+
+@media only screen and (max-width: 450px) {
+  #gallery #artwork {padding: 12px;}
+  #gallery[data-frame=gold] #artwork {padding: 7px; border-size: 2px;}
+  #gallery #glass {width: 250px;}
+}
+
+@media only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+  #gallery #artwork {padding: 12px;}
+  #gallery[data-frame=gold] #artwork {padding: 7px; border-size: 2px;}
+}
