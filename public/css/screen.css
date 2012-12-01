@@ -1,13 +1,17 @@
 #header, #footer {display: none;}
 
-body {max-width: 100%; overflow: hidden; -webkit-transform: transform3d(0,0,0); -webkit-perspective: 1000;}
+body {max-width: 100%; max-height: 100%; overflow: hidden !important; -webkit-transform: transform3d(0,0,0); -webkit-perspective: 1000;}
+body.show_image {background: rgba(255,255,255,1);}
 
+#mobile_notice {display: none; background: rgba(255,255,255,1); color: rgba(128,128,128,1); font-size: 1.3em; text-align: center; padding: 8px 0; font-weight: bold; box-shadow: inset 0 -1px 3px rgba(0,0,0,.12); text-shadow: 0 1px 1px rgba(0,0,0,.08); border-bottom: 1px solid rgba(212,212,212,1);}
 
-#gallery {position: absolute; z-index: 0; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 450px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
-#artwork {position: absolute; z-index: 1; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); overflow: hidden; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
+#container {width: 100%; height: 100%; overflow: hidden;}
+#content {position: relative; width: 100%; height: 100%;}
+#gallery {position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 475px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
+#artwork {position: absolute; z-index: 2; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); overflow: hidden; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
 #artwork #nail {width: 100%; height: 100%; overflow: hidden !important;}
 #artwork iframe {width: 100%; height: 100%; overflow: hidden; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,1);}
-#glass {position: absolute; z-index: 2; top: 80px; text-indent: -99999px; left: 0; right: 0; width: 400px; height: 250px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0);}
+#glass {position: absolute; z-index: 3; top: 80px; text-indent: -99999px; left: 0; right: 0; width: 400px; height: 250px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0);}
 
 #gallery[data-frame=white] #artwork {background: rgba(255,255,255,1);}
 #gallery[data-frame=black] #artwork {background: rgba(23,18,19,1);}
@@ -20,7 +24,8 @@ body {max-width: 100%; overflow: hidden; -webkit-transform: transform3d(0,0,0); 
 #art_piece_form[data-format=video] .hide_for_video {display: none;}
 #art_piece_form[data-format=web_page] .hide_for_web_page {display: none;}
 
-#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 10; width: 550px; min-height: 360px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.72); box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
+#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 10;}
+#selection_area {width: 550px; min-height: 365px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.72); border: 1px solid transparent; border-radius: 8px; box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
 #selection h1 {text-align: center; font-size: 2.8em; padding: 0 0 15px 0; margin: 0 0 25px 0; border-bottom: 1px solid rgba(255,255,255,.32); text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset legend {display: block; font-weight: bold; font-size: 2.0em; padding: 0 0 15px 0; text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset.buttons {margin: 15px 0 0 0; padding: 15px 0 10px 0; border-top: 1px solid rgba(255,255,255,.32); text-align: center;}
@@ -28,16 +33,22 @@ body {max-width: 100%; overflow: hidden; -webkit-transform: transform3d(0,0,0); 
 #selection fieldset .row .row_label {clear: none; float: left; width: 85px; padding: 9px 15px 0 0; text-align: right; text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset .row .row_label label {font-size: 1.7em; font-weight: bold;}
 #selection fieldset .row .row_items {padding: 0 0 0 100px;}
-#selection fieldset .row .row_items input[type=text] {padding: 4px 5px; margin: 0; width: 350px; background: rgba(255,255,255,.82); color: rgba(0,0,0,.82); font-size: 1.5em; border: 1px solid rgba(0,0,0,1); box-shadow: 0 3px 5px rgba(0,0,0,.24);}
+#selection fieldset .row .row_items input[type=text] {padding: 5px 5px; margin: 0; width: 350px; background: rgba(255,255,255,.82); color: rgba(0,0,0,.82); font-size: 1.6em; border: 1px solid rgba(0,0,0,1); box-shadow: 0 3px 5px rgba(0,0,0,.24);}
 #selection fieldset .row .row_items input[type=text]:focus {background-color: rgba(255,255,255,1); color: rgba(0,0,0,1);}
 #selection fieldset .row .row_items select {display: inline-block; padding: 4px 5px; margin: 2px 0 0 0; width: 350px; background: rgba(255,255,255,.82); color: rgba(0,0,0,.82); font-size: 1.5em; border: 1px solid rgba(0,0,0,1); box-shadow: 0 3px 5px rgba(0,0,0,.24);}
 #selection fieldset .row .row_items select:focus {background-color: rgba(255,255,255,1); color: rgba(0,0,0,1);}
 #selection .step[data-step='1'] .row_items {text-align: center; padding: 0;}
-#selection .step button, #selection .step input[type=submit] {display: inline-block; font-weight: bold; font-size: 1.8em; margin: 0 5px; padding: 5px 10px; background: rgba(255,255,100,1); border: none; box-shadow: 0 3px 5px rgba(0,0,0,.12); -webkit-transition: background-color .2s ease-in;}
-#selection .step button:hover, #selection .step input[type=submit]:hover, #selection .step button:focus, #selection .step input[type=submit]:focus {background: rgba(255,0,255,1);}
+#selection .step button, #selection .step input[type=submit] {display: inline-block; font-weight: bold; font-size: 2.0em; margin: 0 5px; padding: 6px 12px; background: rgba(255,255,0,1); border: 1px solid transparent; border-radius: 5px; box-shadow: 0 3px 5px rgba(0,0,0,.12); -webkit-transition: background-color .2s ease-in;}
+#selection .step button:hover, #selection .step input[type=submit]:hover, #selection .step button:focus, #selection .step input[type=submit]:focus {background: rgba(255,255,255,1); cursor: pointer;}
 #selection fieldset .piece_dimension {width: 230px;}
 #selection fieldset .piece_dimension .row_items input[type=text], #selection fieldset .piece_dimension .row .row_items select {width: 120px;}
 
 #content_area {padding: 30px 30px 20px 30px;}
 #content_area .pagination {font-size: 1.2em; padding: 5px 0 10px 0;}
 #content_area .pagination .current {font-weight: bold;}
+
+#gallery_buttons {position: absolute; top: 6px; right: 4px; z-index: 10;}
+#gallery_buttons a.button {display: inline-block; width: 16px; height: 16px; padding: 4px; margin: 0 2px; background: rgba(0,0,0,.32) url(../images/gallery_buttons.png) 0 0 no-repeat; border: 1px solid transparent; text-indent: -9999px; border-radius: 5px; color: rgba(255,255,255,1); box-shadow: 0 2px 3px rgba(0,0,0,.18); overflow: hidden; -webkit-transition: background-color .1s ease-out; -moz-transition: background-color .1s ease-out; -o-transition: background-color .1s ease-out; transition: background-color .1s ease-out;}
+#gallery_buttons a.button:hover, #gallery_buttons a.button:focus {background-color: rgba(0,0,0,.64);}
+#gallery_buttons a#add_piece.button {background-position: 4px 4px;}
+#gallery_buttons a#random_piece.button {background-position: 4px -28px;}

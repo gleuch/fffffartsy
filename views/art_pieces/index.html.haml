@@ -9,8 +9,6 @@
           %strong #{t.art_pieces.form.format[ p.format_type ]}:
           - unless p.url.blank?
             %a{:href => p.piece_url}= p.nice_url
-            %br
-            %a.button{:href => p.piece_url}= t.art_pieces.index.art_piece.view
           - else
             = t.art_pieces.index.art_piece.missing_url
 
@@ -19,3 +17,8 @@
 
   - else
     %p.tc= t.art_pieces.index.no_results
+
+
+#gallery_buttons
+  %a#add_piece.button{:href => '/', :title => t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
+  %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece

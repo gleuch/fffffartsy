@@ -1,2 +1,6 @@
 .c
   = haml :'art_pieces/_gallery'
+
+  #gallery_buttons
+    %a#add_piece.button{:href => '/', :title => t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
+    %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece

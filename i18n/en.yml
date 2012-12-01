@@ -21,6 +21,7 @@ template:
   footer:
     credits:          A <a href="http://fffff.at" rel="follow">F.A.T. Lab</a> project &ndash; Copyfree %1
 
+  mobile_notice:      Display issues may occur when viewing with mobile devices.
 
 art_pieces:
   model:
@@ -57,6 +58,10 @@ art_pieces:
       missing_url:  '<em>&ndash; redacted &ndash;</em>'
 
     no_results:   'Aw, darn. No one wants to show their free art.'
+
+  show:
+    add_piece:    'Frame your art'
+    random_piece: 'Random'
 
   form:
     heading:      'Free Art[sy] &amp; Technology'

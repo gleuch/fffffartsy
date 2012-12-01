@@ -58,15 +58,16 @@ helpers do
     screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
     # Set default screen dimensions to 16:9 if tv mode
-    if p.frame_type == 'tv'
-      screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
-    elsif !p.height.blank?
+    # if p.frame_type == 'tv'
+    #   screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
+    # els
+    if !p.height.blank?
       screen_height = (screen_zoom_ratio.to_f * piece_height).to_i rescue 281
     end
 
     if screen_height <= (300 * v[:ratio]).to_i
       bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).to_i
-      bg_pos_y = (450 * (v[:bg_ratio] || v[:ratio])).to_i
+      bg_pos_y = (475 * (v[:bg_ratio] || v[:ratio])).to_i
       pos_y = (80 * v[:ratio]).to_i
 
       # puts screen_zoom_pct
@@ -125,7 +126,7 @@ helpers do
     }
     
     @title = nil
-    @body_class = []
+    @body_classes = []
 
     # flash.now[:info] = t.template.alert.high_traffic
   end

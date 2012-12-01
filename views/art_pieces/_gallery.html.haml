@@ -8,6 +8,9 @@
   - media_sizes.each do |k,v|
     = set_media_size(@art_piece, v)
 
+- content_for :page_top do
+  #mobile_notice= t.template.mobile_notice
+
 
 #gallery{:'data-frame' => @art_piece.frame_type, :'data-gallery' => @art_piece.gallery_type, :'data-audience' => @art_piece.audience_type, :'data-format' => @art_piece.format_type}
   / PROTECTIVE GLASS

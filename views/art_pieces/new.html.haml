@@ -15,7 +15,11 @@
 .c
   = haml :'art_pieces/_gallery'
 
-  #selection
+  #gallery_buttons
+    %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
+
+#selection
+  #selection_area
     %h1= t.art_pieces.form.heading
 
     %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 1, :'data-format' => @art_piece.format_type}

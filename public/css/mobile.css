@@ -2,12 +2,20 @@
   #gallery #artwork {padding: 17px;}
   #gallery[data-frame=gold] #artwork {padding: 9px; border-size: 4px;}
   #gallery #glass {width: 250px;}
+
+  #selection {zoom: .8; transform: scale(.8); transform-origin: 50% top top; -moz-transform: scale(.8); -moz-transform-origin: 50% top; -o-transform: scale(.8); -o-transform-origin: 50% top; -webkit-transform: scale(.8); -webkit-transform-origin: 50% top;}
+
+  #gallery_buttons {zoom: .8; transform: scale(.8); transform-origin: right top; -moz-transform: scale(.8); -moz-transform-origin: right top; -o-transform: scale(.8); -o-transform-origin: right top; -webkit-transform: scale(.8); -webkit-transform-origin: right top;}
 }
 
 @media only screen and (max-width: 550px) {
   #gallery #artwork {padding: 15px;}
   #gallery[data-frame=gold] #artwork {padding: 8px; border-size: 3px;}
   #gallery #glass {width: 250px;}
+
+  #selection {zoom: .65; transform: scale(.65); transform-origin: 50% top; -moz-transform: scale(.65); -moz-transform-origin: 50% top; -o-transform: scale(.65); -o-transform-origin: 50% top; -webkit-transform: scale(.65); -webkit-transform-origin: 50% top;}
+
+  #gallery_buttons {zoom: .65; transform: scale(.65); transform-origin: right top; -moz-transform: scale(.65); -moz-transform-origin: right top; -o-transform: scale(.65); -o-transform-origin: right top; -webkit-transform: scale(.65); -webkit-transform-origin: right top;}
 }
 
 @media only screen and (max-width: 450px) {
@@ -17,6 +25,11 @@
 }
 
 @media only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+  #mobile_notice {display: block; font-size: 0.9em; padding: 4px 0; opacity: .7; margin: 0 0 2px 0;}
+
+  #gallery {margin-top: 30px;}
   #gallery #artwork {padding: 12px;}
   #gallery[data-frame=gold] #artwork {padding: 7px; border-size: 2px;}
+
+  #gallery_buttons {zoom: .75; transform: scale(.75); transform-origin: right top; -moz-transform: scale(.75); -moz-transform-origin: right top; -o-transform: scale(.75); -o-transform-origin: right top; -webkit-transform: scale(.75); -webkit-transform-origin: right top;}
 }

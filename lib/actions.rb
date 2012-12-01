@@ -1,7 +1,7 @@
 # Show art piece
 def render_piece
   results = Proc.new {
-    @art_piece = ArtPiece.find(params[:id]) rescue nil
+    @art_piece ||= ArtPiece.find(params[:id]) rescue nil
     raise ActiveRecord::RecordNotFound if @art_piece.blank?
   }
 
@@ -23,6 +23,22 @@ get "/pieces" do
     format.html {
       results.call
       haml :'art_pieces/index'
+    }
+  end
+end
+
+# Show random piece
+get "/pieces/random" do
+  results = Proc.new {
+    @art_piece = ArtPiece.order('RAND()').first rescue nil
+    raise ActiveRecord::RecordNotFound if @art_piece.blank?
+  }
+
+  
+  respond_to do |format|
+    format.html {
+      results.call
+      redirect @art_piece.piece_url
     }
   end
 end
