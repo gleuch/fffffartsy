@@ -33,3 +33,7 @@
 
   #gallery_buttons {zoom: .75; transform: scale(.75); transform-origin: right top; -moz-transform: scale(.75); -moz-transform-origin: right top; -o-transform: scale(.75); -o-transform-origin: right top; -webkit-transform: scale(.75); -webkit-transform-origin: right top;}
 }
+
+@media only screen and (max-device-width: 480px) and (orientation: landscape), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape) {
+  #gallery {margin-top: -15px; margin-left: -29px; width: 111%; zoom: .95; transform: scale(.95); transform-origin: 50% top; -moz-transform: scale(.95); -moz-transform-origin: 50% top; -o-transform: scale(.95); -o-transform-origin: 50% top; -webkit-transform: scale(.95); -webkit-transform-origin: 50% top;}
+}

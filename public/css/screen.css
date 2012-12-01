@@ -9,8 +9,8 @@ body.show_image {background: rgba(255,255,255,1);}
 #content {position: relative; width: 100%; height: 100%;}
 #gallery {position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 475px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
 #artwork {position: absolute; z-index: 2; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); overflow: hidden; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
-#artwork #nail {width: 100%; height: 100%; overflow: hidden !important;}
-#artwork iframe {width: 100%; height: 100%; overflow: hidden; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,1);}
+#artwork #nail {width: 100%; height: 100%; overflow: hidden !important; margin: 0; padding: 0; border: 1px solid rgba(0,0,0,.1);}
+#artwork iframe {clear: both; width: 100%; height: 100%; background: rgba(255,255,255,1); padding: 0 !important; margin: 0 !important; border: 0;}
 #glass {position: absolute; z-index: 3; top: 80px; text-indent: -99999px; left: 0; right: 0; width: 400px; height: 250px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0);}
 
 #gallery[data-frame=white] #artwork {background: rgba(255,255,255,1);}
@@ -19,6 +19,7 @@ body.show_image {background: rgba(255,255,255,1);}
 #gallery[data-frame=tv] #artwork {padding-bottom: 25px; background: rgba(23,18,19,1) url(../images/tv_frame.png) bottom center no-repeat;}
 #gallery[data-frame=gold] #artwork {padding: 15px; border: 5px solid rgba(248,196,13,1); background: rgba(212,131,13,1); box-shadow: inset 0 0 35px rgba(72,17,0,1), 0 5px 8px rgba(12,8,6,.32);}
 #gallery[data-frame=transparent] #artwork {background: none; box-shadow: none;}
+#gallery[data-frame=tv] #artwork #nail, #gallery[data-frame=black] #artwork #nail {border-color: rgba(255,255,255,.22);}
 
 #art_piece_form[data-format=image] .hide_for_image {display: none;}
 #art_piece_form[data-format=video] .hide_for_video {display: none;}
