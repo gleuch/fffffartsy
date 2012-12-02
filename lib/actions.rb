@@ -44,21 +44,23 @@ get "/pieces/random" do
 end
 
 # Helps prevent weird padding issue with images inside iframes (firefox)
-get "/pieces/:id/image" do
+get "/pieces/:id/:format_type" do
   results = Proc.new {
     if params[:id] == 'preview'
+      raise ActiveRecord::RecordNotFound unless ['image','video'].include?(params[:format_type])
       raise ActiveRecord::RecordNotFound if params[:url].blank?
     else
+      pass unless ['image','video'].include?(params[:format_type])
       @art_piece = ArtPiece.find(params[:id]) rescue nil
       raise ActiveRecord::RecordNotFound if @art_piece.blank?
-      raise ActiveRecord::RecordNotFound if @art_piece.format_type != 'image'
+      raise ActiveRecord::RecordNotFound if @art_piece.format_type != params[:format_type]
     end
   }
 
   respond_to do |format|
     format.html {
       results.call
-      haml :'art_pieces/image'
+      haml "art_pieces/#{params[:format_type]}".to_sym
     }
   end
 end

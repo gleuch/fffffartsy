@@ -93,6 +93,7 @@ var Fartsy = {
 
       if (!err && !(f && f != '' && Fartsy.Preview.formats[f])) err = 'Please select the proper format.';
       if (!err && !(u && u != '' && u.match(/^http/i))) err = 'Please enter a valid url.';
+      if (!err && Fartsy.Preview.formats[f] == 'video' && !(u && u != '' && (u.match(/youtube\.com|youtu\.be|vimeo\.com/i) || u.match(/\.(flv|mp4|mov)$/i) ))) err = 'Please enter a YouTube, Vimeo, or raw (flv, mov, mp4) video url.';
 
       if (!err || err == '') {
         g.attr('data-format', Fartsy.Preview.formats[f]);
@@ -103,24 +104,29 @@ var Fartsy = {
           var i = new Image();
           i.src = u;
           i.onload = function() {
-            x.attr('src', '/pieces/preview/image?url='+ encodeURI(u));
+            Fartsy.Preview.set_url('/pieces/preview/image?url='+ encodeURI(u));
             jQuery('#art_piece_width').val(i.width);
             jQuery('#art_piece_height').val(i.height);
             Fartsy.Preview.set_dimensions(i.width, i.height, t);
           };
 
         } else if (Fartsy.Preview.formats[f] == 'video') {
-          x.attr('src', u);
-          if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h);
+          Fartsy.Preview.set_url('/pieces/preview/video?url='+ encodeURI(u));
+          Fartsy.Preview.set_dimensions(640,360); // 16:9
 
         } else {
-          x.attr('src', u);
+          Fartsy.Preview.set_url(u);
           if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h);
         }
 
       } else {
         alert(err)
       }
+    },
+
+    set_url : function(u) {
+      var x = jQuery('#artwork iframe'), s = x.attr('src');
+      if (s != u) x.attr('src', u);
     },
 
     set_dimensions : function(w,h,r,sw) {

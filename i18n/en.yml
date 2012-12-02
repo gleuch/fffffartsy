@@ -84,7 +84,9 @@ art_pieces:
         image:      'Image Art Piece Information'
         web_page:   'Web Page Art Piece Information'
         video:      'Video Art Piece Information'
-      
+
+      video_url_note: 'Only Vimeo, YouTube, and raw (flv, mp4, mov) URLs are accepted.'
+
       labels:
         url:        'URL'
         width:      'Width'

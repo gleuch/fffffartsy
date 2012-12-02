@@ -1,0 +1,39 @@
+- @body_classes << 'show_image'
+- @add_javascripts << {:src => 'http://vhx.tv/javascripts/jquery.swfobject-1.1.1.js'}
+
+- url = @art_piece.url unless @art_piece.blank?
+- url ||= params[:url]
+
+- unless url.blank?
+  - if true
+    #megaplaya
+
+    %script{:type => 'text/javascript'}
+      :plain
+        var megaplaya = false;
+        jQuery(document).ready(function() {
+          jQuery('#megaplaya').flash({swf: 'http://vhx.tv/embed/megaplaya.swf', width: '100%', height: '100%', allowFullScreen: true, allowScriptAccess: "always"});
+        });
+
+        // Load VHX API, disable chrome, set looping, and begin play
+        function megaplaya_loaded() {
+          megaplaya = jQuery('#megaplaya').children()[0];
+          megaplaya.api_disablePlaybar();
+          megaplaya.api_addListener('onVideoFinish', 'megaplaya_loop');
+          megaplaya.api_loadQueue([{url : '#{url}'}]);
+          megaplaya_loop();
+        }
+
+        function megaplaya_loop() {
+          megaplaya.api_playQueueAt(0);
+        }
+
+  - else
+    - vhx_url = "http://vhx.tv/embed/megaplaya.swf?videos=#{CGI.escape(url)}"
+
+    %object{:data => vhx_url, :type => "application/x-shockwave-flash", :width => '100%', :height => '100%'}
+      %param{:name => "allowFullScreen", :value => "true"}
+      %param{:name => "allowScriptAccess", :value => "always"}
+      %param{:name => "movie", :value => vhx_url}
+      %param{:name => "wmode", :value => "opaque"}
+

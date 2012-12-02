@@ -38,6 +38,7 @@ body.show_image {background: rgba(255,255,255,1);}
 #selection fieldset .row .row_items input[type=text]:focus {background-color: rgba(255,255,255,1); color: rgba(0,0,0,1);}
 #selection fieldset .row .row_items select {display: inline-block; padding: 4px 5px; margin: 2px 0 0 0; width: 350px; background: rgba(255,255,255,.82); color: rgba(0,0,0,.82); font-size: 1.5em; border: 1px solid rgba(0,0,0,1); box-shadow: 0 3px 5px rgba(0,0,0,.24);}
 #selection fieldset .row .row_items select:focus {background-color: rgba(255,255,255,1); color: rgba(0,0,0,1);}
+#selection fieldset .row .row_items p.note {font-size: 1.2em; color: rgba(255,255,255,.72); padding: 5px 0 0 0; font-style: italic;}
 #selection .step[data-step='1'] .row_items {text-align: center; padding: 0;}
 #selection .step button, #selection .step input[type=submit] {display: inline-block; font-weight: bold; font-size: 2.0em; margin: 0 5px; padding: 6px 12px; background: rgba(255,255,0,1); border: 1px solid transparent; border-radius: 5px; box-shadow: 0 3px 5px rgba(0,0,0,.12); -webkit-transition: background-color .2s ease-in;}
 #selection .step button:hover, #selection .step input[type=submit]:hover, #selection .step button:focus, #selection .step input[type=submit]:focus {background: rgba(255,255,255,1); cursor: pointer;}

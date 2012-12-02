@@ -27,13 +27,14 @@
     %meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
 
 
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/default.css"}
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/screen.css", :media => "only screen"}
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/mobile.css", :media => "only screen"}
+    - @add_stylesheets.each do |v|
+      %link{:rel => "stylesheet", :type => "text/css", :href => v[:href], :media => v[:media]}
+
     = yield_content(:css) if content_for?(:css)
 
-    %script{:type => "text/javascript", :src => "/js/jquery-1.8.3.min.js"}
-    %script{:type => "text/javascript", :src => "/js/site.js"}
+    - @add_javascripts.each do |v|
+      %script{:type => "text/javascript", :src => v[:src]}
+
     %script{:type => "text/javascript"}
       - unless prod?
         var _gaq = {push:function(a) {console.log('GA: '+ a.toString());}};

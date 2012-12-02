@@ -1,6 +1,11 @@
 - if @art_piece.format_type == 'image'
   - url = "/pieces/#{@art_piece.id}/image" unless @art_piece.new_record?
   - url ||= "/pieces/preview/image?url=#{CGI.escape(@art_piece.url)}"
+
+- elsif @art_piece.format_type == 'video'
+  - url = "/pieces/#{@art_piece.id}/video" unless @art_piece.new_record?
+  - url ||= "/pieces/preview/video?url=#{CGI.escape(@art_piece.url)}"
+
 - url ||= @art_piece.url
 
 
@@ -13,8 +18,9 @@
 
 
 #gallery{:'data-frame' => @art_piece.frame_type, :'data-gallery' => @art_piece.gallery_type, :'data-audience' => @art_piece.audience_type, :'data-format' => @art_piece.format_type}
-  / PROTECTIVE GLASS
-  #glass &nbsp;
+  - unless @art_piece.format_type == 'video'
+    / PROTECTIVE GLASS
+    #glass &nbsp;
 
   / THE ARTWORK
   #artwork

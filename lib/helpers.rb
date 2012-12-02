@@ -58,10 +58,9 @@ helpers do
     screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
     # Set default screen dimensions to 16:9 if tv mode
-    # if p.frame_type == 'tv'
-    #   screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
-    # els
-    if !p.height.blank?
+    if p.format_type == 'video'
+     screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
+    elsif !p.height.blank?
       screen_height = (screen_zoom_ratio.to_f * piece_height).to_i rescue 281
     end
 
@@ -127,6 +126,17 @@ helpers do
     
     @title = nil
     @body_classes = []
+
+    @add_javascripts = [
+      {:src => "/js/jquery-1.8.3.min.js"},
+      {:src => "/js/site.js"}
+    ]
+
+    @add_stylesheets = [
+      {:href => "/css/default.css"},
+      {:href => "/css/screen.css", :media => "only screen"},
+      {:href => "/css/mobile.css", :media => "only screen"}
+    ]
 
     # flash.now[:info] = t.template.alert.high_traffic
   end
