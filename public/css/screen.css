@@ -25,8 +25,8 @@ body.show_image {background: rgba(255,255,255,1);}
 #art_piece_form[data-format=video] .hide_for_video {display: none;}
 #art_piece_form[data-format=web_page] .hide_for_web_page {display: none;}
 
-#selection {position: absolute; top: 35px; left: 0; right: 0; z-index: 10;}
-#selection_area {width: 550px; min-height: 365px; padding: 15px; margin: 0 auto; background: rgba(12,8,6,.72); border: 1px solid transparent; border-radius: 8px; box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
+#selection {position: absolute; top: -15px; left: 0; right: 0; z-index: 10;}
+#selection_area {width: 550px; min-height: 400px; padding: 30px 15px 15px 15px; margin: 0 auto; background: rgba(12,8,6,.72); border: 1px solid transparent; border-radius: 8px; box-shadow: 0 5px 8px rgba(12,8,6,.32); color: rgba(255,255,255,1);}
 #selection h1 {text-align: center; font-size: 2.8em; padding: 0 0 15px 0; margin: 0 0 25px 0; border-bottom: 1px solid rgba(255,255,255,.32); text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset legend {display: block; font-weight: bold; font-size: 2.0em; padding: 0 0 15px 0; text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,.32);}
 #selection fieldset.buttons {margin: 15px 0 0 0; padding: 15px 0 10px 0; border-top: 1px solid rgba(255,255,255,.32); text-align: center;}
@@ -45,6 +45,12 @@ body.show_image {background: rgba(255,255,255,1);}
 #selection fieldset .piece_dimension {width: 230px;}
 #selection fieldset .piece_dimension .row_items input[type=text], #selection fieldset .piece_dimension .row .row_items select {width: 120px;}
 
+#selection.preview_mode #selection_area, #selection a#selection_view {display: none;}
+#selection.preview_mode a#selection_view {display: block; text-align: center; color: rgba(255,255,255,.72); font-size: 1.5em; font-weight: bold; width: 550px; padding: 30px 15px 15px 15px; margin: 0 auto; background: rgba(12,8,6,.72); border: 1px solid transparent; border-radius: 8px; box-shadow: 0 5px 8px rgba(12,8,6,.32);}
+#selection.preview_mode a#selection_view:hover, #selection.preview_mode a#selection_view:focus {color: rgba(255,255,255,1);}
+
+
+
 #content_area {padding: 30px 30px 20px 30px;}
 #content_area .pagination {font-size: 1.2em; padding: 5px 0 10px 0;}
 #content_area .pagination .current {font-weight: bold;}
@@ -54,3 +60,12 @@ body.show_image {background: rgba(255,255,255,1);}
 #gallery_buttons a.button:hover, #gallery_buttons a.button:focus {background-color: rgba(0,0,0,.64);}
 #gallery_buttons a#add_piece.button {background-position: 4px 4px;}
 #gallery_buttons a#random_piece.button {background-position: 4px -28px;}
+
+#navigation_buttons a {position: absolute; z-index: 10; top: 180px; width: 150px; height: 150px; overflow: hidden; border: 1px solid transparent; border-radius: 75px; opacity: .5; background: rgba(0,0,0,.64) url(../images/pagination.png) 0 0 no-repeat; text-indent: -9999px; -webkit-transition: opacity .1s ease-out, background-position .1s ease-out, left .1s ease-out, right .1s ease-out; -moz-transition: opacity .1s ease-out, background-position .1s ease-out, left .1s ease-out, right .1s ease-out; -o-transition: opacity .1s ease-out, background-position .1s ease-out, left .1s ease-out, right .1s ease-out; transition: opacity .1s ease-out, background-position .1s ease-out, left .1s ease-out, right .1s ease-out;}
+#navigation_buttons a#prev_art_piece {left: -118px; background-position: 121px 57px;}
+#navigation_buttons a#next_art_piece {right: -118px; background-position: 13px -97px;}
+#navigation_buttons a#prev_art_piece:hover, #navigation_buttons a#prev_art_piece:focus {left: -108px;}
+#navigation_buttons a#next_art_piece:hover, #navigation_buttons a#next_art_piece:focus {right: -108px;}
+#navigation_buttons a:hover, #navigation_buttons a:focus {opacity: 1;}
+#navigation_buttons a#prev_art_piece {transform-origin: right top; -moz-transform-origin: right top; -o-transform-origin: right top; -webkit-transform-origin: right top;}
+#navigation_buttons a#next_art_piece {transform-origin: left top; -moz-transform-origin: left top; -o-transform-origin: left top; -webkit-transform-origin: left top;}

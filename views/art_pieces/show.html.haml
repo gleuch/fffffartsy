@@ -4,3 +4,10 @@
   #gallery_buttons
     %a#add_piece.button{:href => '/', :title => t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
     %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
+
+  #navigation_buttons
+    - unless @prev_art_piece.blank?
+      %a#prev_art_piece{:href => @prev_art_piece.piece_url}= t.art_pieces.show.prev_piece
+
+    - unless @next_art_piece.blank?
+      %a#next_art_piece{:href => @next_art_piece.piece_url}= t.art_pieces.show.next_piece

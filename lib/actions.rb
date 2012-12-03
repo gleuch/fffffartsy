@@ -3,6 +3,9 @@ def render_piece
   results = Proc.new {
     @art_piece ||= ArtPiece.find(params[:id]) rescue nil
     raise ActiveRecord::RecordNotFound if @art_piece.blank?
+
+    @prev_art_piece = @art_piece.previous rescue nil
+    @next_art_piece = @art_piece.next rescue nil
   }
 
   

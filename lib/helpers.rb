@@ -51,9 +51,11 @@ helpers do
     piece_width, piece_height = p.width, p.height
     piece_width ||= 800
     piece_height ||= 600
+    
+    scale = p.scale * v[:ratio]
 
     orig_screen_width, orig_screen_height = (sw || 375), 281
-    screen_width, screen_height = (orig_screen_width * v[:ratio]).to_i, (orig_screen_height * v[:ratio]).to_i
+    screen_width, screen_height = (orig_screen_width * scale).to_i, (orig_screen_height * scale).to_i
     screen_zoom_ratio = '%0.02f' % ((screen_width / piece_width.to_f))
     screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
@@ -64,10 +66,10 @@ helpers do
       screen_height = (screen_zoom_ratio.to_f * piece_height).to_i rescue 281
     end
 
-    if screen_height <= (300 * v[:ratio]).to_i
-      bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).to_i
-      bg_pos_y = (475 * (v[:bg_ratio] || v[:ratio])).to_i
-      pos_y = (80 * v[:ratio]).to_i
+    if screen_height <= (300 * scale).to_i
+      bg_width = (6578 * (v[:bg_ratio] || scale)).to_i
+      bg_pos_y = (475 * (v[:bg_ratio] || scale)).to_i
+      pos_y = (80 * scale).to_i
 
       # puts screen_zoom_pct
 

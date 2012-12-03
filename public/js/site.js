@@ -15,7 +15,12 @@ var Fartsy = {
       if (jQuery('#art_piece_form')) {
         Fartsy.Preview.step_to();
 
-        jQuery('.step select, .step input#art_piece_url, .step .piece_dimension input[type=text]').on('change', function() {Fartsy.Preview.preview();});
+        jQuery('.step select, .step input#art_piece_url, .step .piece_dimension input[type=text], .step .range_length input[type=range]').on('change', function() {Fartsy.Preview.preview();});
+        jQuery('#art_piece_scale').on('change', function() { jQuery('#scale_output').html( Math.round(jQuery(this).val() * 100) +'%'); })
+
+        jQuery('#selection_view').click(function() {
+          jQuery('#selection').removeClass('preview_mode');
+        })
 
         /* Step 1 actions */
         jQuery('.step[data-step=1] button').on('click', function() {
@@ -28,11 +33,6 @@ var Fartsy = {
         });
 
         /* Step 2 actions */
-        jQuery('.step[data-step=2] button.art_piece_preview').on('click', function() {
-          Fartsy.Preview.preview();
-          return false;
-        });
-
         jQuery('.step[data-step=2] button.art_piece_continue').on('click', function() {
           var u = jQuery('#art_piece_url').val();
 
@@ -51,15 +51,33 @@ var Fartsy = {
         });
 
         /* Step 3 actions */
-        jQuery('.step[data-step=3] button.art_piece_preview').on('click', function() {
-          Fartsy.Preview.preview();
-          return false;
-        });
-
         jQuery('.step[data-step=3] button.art_piece_back').on('click', function() {
           Fartsy.Preview.step_to(2);
           return false;
         });
+
+        jQuery('.step[data-step=3] button.art_piece_continue').on('click', function() {
+          Fartsy.Preview.step_to(4);
+          return false;
+        });
+
+        jQuery('.step[data-step=3] button.art_piece_continue').on('click', function() {
+          Fartsy.Preview.step_to(4);
+          return false;
+        });
+
+        /* Step 4 actions */
+        jQuery('.step[data-step=4] button.art_piece_back').on('click', function() {
+          Fartsy.Preview.step_to(3);
+          return false;
+        });
+
+        /* Preview button */
+        jQuery('.step button.art_piece_preview').on('click', function() {
+          Fartsy.Preview.preview(true);
+          return false;
+        });
+
       }
     },
 
@@ -82,7 +100,7 @@ var Fartsy = {
     },
 
 
-    preview : function() {
+    preview : function(alr) {
       var f = jQuery('#art_piece_format').val(),
           u = jQuery('#art_piece_url').val(),
           w = jQuery('#art_piece_width').val(),
@@ -119,7 +137,10 @@ var Fartsy = {
           if ((w && w != '') && (h && h != '')) Fartsy.Preview.set_dimensions(w,h);
         }
 
-      } else {
+        if (alr) {
+          jQuery('#selection').addClass('preview_mode');
+        }
+      } else if (!!alr) {
         alert(err)
       }
     },

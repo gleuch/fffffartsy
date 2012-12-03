@@ -29,6 +29,11 @@ art_pieces:
     gallery:      'Gallery Setup'
     audience:     'Audience'
     frame:        'Frame Style'
+    title:        'Title'
+    artist:       'Artist(s)'
+    year:         'Year'
+    media:        'Media'
+    dimensions:   'Dimensions'
 
     formats:
       image:      'Image'
@@ -62,6 +67,8 @@ art_pieces:
   show:
     add_piece:    'Frame your art'
     random_piece: 'Random'
+    prev_piece:   'Previous'
+    next_piece:   'Next'
 
   form:
     heading:      'Free Art[sy] &amp; Technology'
@@ -71,6 +78,8 @@ art_pieces:
       create:     'Create'
       continue:   'Continue'
       back:       'Back'
+
+    cancel_preview: 'Continue being artsy-fartsy&hellip;'
 
     format:
       heading:  'What is the media?'
@@ -101,7 +110,24 @@ art_pieces:
         frame:      'Frame'
         gallery:    'Gallery'
         audience:   'Audience'
+        scale:      'Scale Resizing'
+      scale:
+        start:      '0'
+        middle:     '1'
+        end:        '2'
 
+
+    art_info:
+      heading:
+        image:      'Image Art Piece Information'
+        web_page:   'Web Page Art Piece Information'
+        video:      'Video Art Piece Information'
+      labels:
+        artist:     'Artist(s)'
+        title:      'Title'
+        media:      'Media'
+        year:       'Year'
+        dimensions: 'Dimensions'
 
 
 # --- ERRORS ----------------------------------------------

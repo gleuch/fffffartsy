@@ -4,6 +4,12 @@
 - gallery = params[:art_piece][:gallery] rescue nil
 - frame = params[:art_piece][:frame] rescue nil
 - audience = params[:art_piece][:audience] rescue nil
+- title = params[:art_piece][:title] rescue nil
+- artist = params[:art_piece][:artist] rescue nil
+- year = params[:art_piece][:year] rescue nil
+- media = params[:art_piece][:media] rescue nil
+- dimensions = params[:art_piece][:dimensions] rescue nil
+- scale = params[:art_piece][:scale] rescue 1
 
 
 %script{:type => 'text/javascript'}
@@ -19,11 +25,14 @@
     %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
 
 #selection
+  %a#selection_view{:href => 'javascript:;'}= t.art_pieces.form.cancel_preview
+
   #selection_area
     %h1= t.art_pieces.form.heading
 
-    %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 1, :'data-format' => @art_piece.format_type}
+    %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 3, :'data-format' => @art_piece.format_type}
       %input#art_piece_format{:type => 'hidden', :name => 'art_piece[format]', :value => @art_piece.format}
+
       .step{:'data-step' => 1}
         %fieldset
           %legend= t.art_pieces.form.format.heading
@@ -102,6 +111,56 @@
                     %option{:value => k, :selected => (audience == v)}= t.art_pieces.model.audiences[ v.to_s ]
           - else
             %input{:type => 'hidden', :name => 'art_piece[audience]', :value => ArtPiece::AUDIENCES.keys.first}
+
+          .row.c
+            .row_label
+              %label{:for => 'art_piece_scale'}= t.art_pieces.form.customizations.labels.scale
+            .row_items.range_length
+              %input#art_piece_scale{:type => 'range', :name => 'art_piece[scale]', :step => 0.1, :value => scale, :min => 0, :max => 2}
+              %span#scale_output #{'%0.0f%' % (scale.to_f * 100)}
+              .c.tc
+                .l= t.art_pieces.form.customizations.scale.start
+                = t.art_pieces.form.customizations.scale.middle
+                .r= t.art_pieces.form.customizations.scale.end
+
+        %fieldset.buttons.c
+          %button.art_piece_back.l= t.art_pieces.form.buttons.back
+          %button.art_piece_preview= t.art_pieces.form.buttons.preview
+          %button.art_piece_continue.r= t.art_pieces.form.buttons.continue
+
+      .step{:'data-step' => 4}
+        %fieldset
+          %legend
+            .hide_for_web_page.hide_for_video= t.art_pieces.form.art_info.heading.image
+            .hide_for_video.hide_for_image= t.art_pieces.form.art_info.heading.web_page
+            .hide_for_image.hide_for_web_page= t.art_pieces.form.art_info.heading.video
+
+          .row.c
+            .row_label
+              %label{:for => 'art_piece_title'}= t.art_pieces.form.art_info.labels.title
+            .row_items
+              %input#art_piece_title{:type => 'text', :name => 'art_piece[title]', :value => title}
+          .row.c
+            .row_label
+              %label{:for => 'art_piece_artist'}= t.art_pieces.form.art_info.labels.artist
+            .row_items
+              %input#art_piece_artist{:type => 'text', :name => 'art_piece[artist]', :value => artist}
+          .row.c
+            .row_label
+              %label{:for => 'art_piece_year'}= t.art_pieces.form.art_info.labels.year
+            .row_items
+              %input#art_piece_year{:type => 'text', :name => 'art_piece[year]', :value => year}
+          .row.c
+            .row_label
+              %label{:for => 'art_piece_media'}= t.art_pieces.form.art_info.labels.media
+            .row_items
+              %input#art_piece_media{:type => 'text', :name => 'art_piece[media]', :value => media}
+          - if false
+            .row.c
+              .row_label
+                %label{:for => 'art_piece_dimensions'}= t.art_pieces.form.art_info.labels.dimensions
+              .row_items
+                %input#art_piece_dimensions{:type => 'text', :name => 'art_piece[dimensions]', :value => dimensions}
 
         %fieldset.buttons.c
           %button.art_piece_back.l= t.art_pieces.form.buttons.back
