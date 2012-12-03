@@ -56,7 +56,7 @@ helpers do
 
     orig_screen_width, orig_screen_height = (sw || 375), 281
     screen_width, screen_height = (orig_screen_width * scale).to_i, (orig_screen_height * scale).to_i
-    screen_zoom_ratio = '%0.02f' % ((screen_width / piece_width.to_f))
+    screen_zoom_ratio = '%0.02f' % (screen_width / piece_width.to_f)
     screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
     # Set default screen dimensions to 16:9 if tv mode
@@ -67,11 +67,10 @@ helpers do
     end
 
     if screen_height <= (300 * scale).to_i
-      bg_width = (6578 * (v[:bg_ratio] || scale)).to_i
-      bg_pos_y = (475 * (v[:bg_ratio] || scale)).to_i
-      pos_y = (80 * scale).to_i
-
-      # puts screen_zoom_pct
+      bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).to_i
+      bg_pos_y = (475 * (v[:bg_ratio] || v[:ratio])).to_i
+      adjusted_height_scale_diff = (2 - scale) * ( (1 - v[:ratio]) * ( ((orig_screen_width / piece_width.to_f) * piece_height) / 2.to_f) ).to_i
+      pos_y = ( (80 * (2 - scale)) - adjusted_height_scale_diff ).to_i
 
       "<style type=\"text/css\", media=\"#{v[:media]}\">
         #{v[:css]}

@@ -7,7 +7,7 @@ param {display: none;}
 html, body {height: 100%;}
 html * {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;}
 body {line-height: 1.0em; font-size: 62.5%; margin: 0; padding: 0; background: rgba(223,219,216,1);}
-body ::selection {background: rgba(255,0,255,.64); color: rgba(0,0,0,1); text-shadow: 0 1px 2px rgba(0,0,0,.12);}
+body ::selection {background: rgba(255,0,255,.64); color: rgba(12,8,6,1); text-shadow: 0 1px 2px rgba(12,8,6,.12);}
 dl dt {font-weight: bold;}
 ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
@@ -19,15 +19,15 @@ table {border-collapse: collapse; border-spacing: 0; font-size: 1.0em;}
 thead, tbody, tr, th, td {font-size: 1.0em; line-height: 1.0em;}
 body, h1, h2, h3, h4, h5, h6 {font-family: 'franklin-gothic-urw', Arial, Helvetica, Verdana, sans-serif; line-height: 1.2em;}
 h1, h2, h3, h4, h5, h6, input, select, textarea, p, blockquote, li, dt, dd {letter-spacing: 0;}
-p, blockquote, q, ins, li, dt, dd, input, select, textarea, button {font-size: 1.3em; font-family: 'adelle-sans', Arial, Helvetica, Verdana, sans-serif; color: rgba(0,0,0,1); line-height: 1.25em;}
+p, blockquote, q, ins, li, dt, dd, input, select, textarea, button {font-size: 1.3em; font-family: 'adelle-sans', Arial, Helvetica, Verdana, sans-serif; color: rgba(12,8,6,1); line-height: 1.25em;}
 ins {line-height: 1.0em; font-size: 1.0em;}
-var, code, samp {display: inline-block; padding: 1px 5px; margin: -1px 0; font-size: 1.0em; color: rgba(33,33,33,1); line-height: 1.25em; font-family: Courier, 'Courier New', monospace; font-style: normal; background: rgba(0,0,0,.08); box-shadow: 0 1px 1px rgba(0,0,0,.24);}
+var, code, samp {display: inline-block; padding: 1px 5px; margin: -1px 0; font-size: 1.0em; color: rgba(33,33,33,1); line-height: 1.25em; font-family: Courier, 'Courier New', monospace; font-style: normal; background: rgba(12,8,6,.08); box-shadow: 0 1px 1px rgba(12,8,6,.24);}
 code {display: block; font-size: 1.3em; padding: 0; margin: 0;}
 blockquote p, blockquote blockquote, li li, p code {font-size: 1.0em;}
 dt {font-weight: bold;}
 
 a {color: rgba(33,33,33,1); text-decoration: none;}
-a:focus, a:hover {color: rgba(0,0,0,1);}
+a:focus, a:hover {color: rgba(12,8,6,1);}
 
 dl,ul,h1,h2,h3,h4,h5,h6,p {padding: 0 0 10px 0;}
 ul li {padding: 0 0 5px 0;}

@@ -1,3 +1,5 @@
+- @add_javascripts << {:src => '/js/html5slider.js'}
+
 - url = params[:art_piece][:url] rescue nil
 - width = params[:art_piece][:width] rescue 800
 - height = params[:art_piece][:height] rescue 600
@@ -30,7 +32,7 @@
   #selection_area
     %h1= t.art_pieces.form.heading
 
-    %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 3, :'data-format' => @art_piece.format_type}
+    %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 1, :'data-format' => @art_piece.format_type}
       %input#art_piece_format{:type => 'hidden', :name => 'art_piece[format]', :value => @art_piece.format}
 
       .step{:'data-step' => 1}
@@ -116,9 +118,10 @@
             .row_label
               %label{:for => 'art_piece_scale'}= t.art_pieces.form.customizations.labels.scale
             .row_items.range_length
-              %input#art_piece_scale{:type => 'range', :name => 'art_piece[scale]', :step => 0.1, :value => scale, :min => 0, :max => 2}
-              %span#scale_output #{'%0.0f%' % (scale.to_f * 100)}
-              .c.tc
+              .wrap
+                %input#art_piece_scale{:type => 'range', :name => 'art_piece[scale]', :step => 0.1, :value => scale, :min => 0, :max => 2}
+                %span#scale_output #{'%0.0f%' % (scale.to_f * 100)}
+              .tc
                 .l= t.art_pieces.form.customizations.scale.start
                 = t.art_pieces.form.customizations.scale.middle
                 .r= t.art_pieces.form.customizations.scale.end

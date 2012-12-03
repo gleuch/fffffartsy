@@ -3,13 +3,13 @@
   #gallery[data-frame=gold] #artwork {padding: 9px; border-size: 4px;}
   #gallery #glass {width: 250px;}
 
-  #selection {zoom: .8; transform: scale(.8); transform-origin: 50% top top; -moz-transform: scale(.8); -moz-transform-origin: 50% top; -o-transform: scale(.8); -o-transform-origin: 50% top; -webkit-transform: scale(.8); -webkit-transform-origin: 50% top;}
+  #selection, #placard_area {zoom: .8; transform: scale(.8); transform-origin: 50% top top; -moz-transform: scale(.8); -moz-transform-origin: 50% top; -o-transform: scale(.8); -o-transform-origin: 50% top; -webkit-transform: scale(.8); -webkit-transform-origin: 50% top;}
 
   #gallery_buttons {zoom: .8; transform: scale(.8); transform-origin: right top; -moz-transform: scale(.8); -moz-transform-origin: right top; -o-transform: scale(.8); -o-transform-origin: right top; -webkit-transform: scale(.8); -webkit-transform-origin: right top;}
 
-  #navigation_buttons a {top: 185px; zoom: .8; transform: scale(.8); -moz-transform: scale(.8); -o-transform: scale(.8); -webkit-transform: scale(.8);}
-  #navigation_buttons a#prev_art_piece {left: -122px;}
-  #navigation_buttons a#next_art_piece {right: -122px;}
+  #navigation_buttons a, #navigation_buttons span {top: 185px; zoom: .8; transform: scale(.8); -moz-transform: scale(.8); -o-transform: scale(.8); -webkit-transform: scale(.8);}
+  #navigation_buttons #prev_art_piece {left: -122px;}
+  #navigation_buttons #next_art_piece {right: -122px;}
   #navigation_buttons a#prev_art_piece:hover, #navigation_buttons a#prev_art_piece:focus {left: -116px;}
   #navigation_buttons a#next_art_piece:hover, #navigation_buttons a#next_art_piece:focus {right: -116px;}
 }
@@ -19,13 +19,13 @@
   #gallery[data-frame=gold] #artwork {padding: 8px; border-size: 3px;}
   #gallery #glass {width: 250px;}
 
-  #selection {zoom: .65; transform: scale(.65); transform-origin: 50% top; -moz-transform: scale(.65); -moz-transform-origin: 50% top; -o-transform: scale(.65); -o-transform-origin: 50% top; -webkit-transform: scale(.65); -webkit-transform-origin: 50% top;}
+  #selection, #placard_area {zoom: .65; transform: scale(.65); transform-origin: 50% top; -moz-transform: scale(.65); -moz-transform-origin: 50% top; -o-transform: scale(.65); -o-transform-origin: 50% top; -webkit-transform: scale(.65); -webkit-transform-origin: 50% top;}
 
   #gallery_buttons {zoom: .65; transform: scale(.65); transform-origin: right top; -moz-transform: scale(.65); -moz-transform-origin: right top; -o-transform: scale(.65); -o-transform-origin: right top; -webkit-transform: scale(.65); -webkit-transform-origin: right top;}
 
-  #navigation_buttons a {top: 185px; zoom: .65; transform: scale(.65); -moz-transform: scale(.65); -o-transform: scale(.65); -webkit-transform: scale(.65);}
-  #navigation_buttons a#prev_art_piece {left: -128px;}
-  #navigation_buttons a#next_art_piece {right: -128px;}
+  #navigation_buttons a, #navigation_buttons span {top: 185px; zoom: .65; transform: scale(.65); -moz-transform: scale(.65); -o-transform: scale(.65); -webkit-transform: scale(.65);}
+  #navigation_buttons #prev_art_piece {left: -128px;}
+  #navigation_buttons #next_art_piece {right: -128px;}
   #navigation_buttons a#prev_art_piece:hover, #navigation_buttons a#prev_art_piece:focus {left: -120px;}
   #navigation_buttons a#next_art_piece:hover, #navigation_buttons a#next_art_piece:focus {right: -120px;}
 }
@@ -35,9 +35,9 @@
   #gallery[data-frame=gold] #artwork {padding: 7px; border-size: 2px;}
   #gallery #glass {width: 250px;}
 
-  #navigation_buttons a {top: 140px; zoom: .5; transform: scale(.5); -moz-transform: scale(.5); -o-transform: scale(.5); -webkit-transform: scale(.5);}
-  #navigation_buttons a#prev_art_piece {left: -132px;}
-  #navigation_buttons a#next_art_piece {right: -132px;}
+  #navigation_buttons a, #navigation_buttons span {top: 140px; zoom: .5; transform: scale(.5); -moz-transform: scale(.5); -o-transform: scale(.5); -webkit-transform: scale(.5);}
+  #navigation_buttons #prev_art_piece {left: -132px;}
+  #navigation_buttons #next_art_piece {right: -132px;}
   #navigation_buttons a#prev_art_piece:hover, #navigation_buttons a#prev_art_piece:focus {left: -129px;}
   #navigation_buttons a#next_art_piece:hover, #navigation_buttons a#next_art_piece:focus {right: -129px;}
 }

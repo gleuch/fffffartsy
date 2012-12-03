@@ -67,8 +67,18 @@ art_pieces:
   show:
     add_piece:    'Frame your art'
     random_piece: 'Random'
+    info:         'Piece Information'
     prev_piece:   'Previous'
     next_piece:   'Next'
+    prev_piece_disabled:  'Earliest'
+    next_piece_disabled:  'Latest'
+
+    placard:
+      title_unknown:  '<em>Title Unknown</em>'
+      artist_unknown: '<em>Artist Unknown</em>'
+      video_link:     'Video Link'
+      website_link:   'Visit Website'
+      close:          '&times;'
 
   form:
     heading:      'Free Art[sy] &amp; Technology'
@@ -110,11 +120,11 @@ art_pieces:
         frame:      'Frame'
         gallery:    'Gallery'
         audience:   'Audience'
-        scale:      'Scale Resizing'
+        scale:      'Scaling'
       scale:
-        start:      '0'
-        middle:     '1'
-        end:        '2'
+        start:      '0%'
+        middle:     '100%'
+        end:        '200%'
 
 
     art_info:

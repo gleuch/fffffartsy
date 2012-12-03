@@ -7,6 +7,11 @@
   - url ||= "/pieces/preview/video?url=#{CGI.escape(@art_piece.url)}"
 
 - url ||= @art_piece.url
+- details = []
+- details << @art_piece.year unless @art_piece.year.blank?
+- details << @art_piece.dimensions unless @art_piece.dimensions.blank?
+- details << "<a href=\"#{@art_piece.url}\" target=\"_blank\">#{t.art_pieces.show.placard.website_link}</a>" if ['web_page'].include?(@art_piece.format_type)
+- details << "<a href=\"#{@art_piece.url}\" target=\"_blank\">#{t.art_pieces.show.placard.video_link}</a>" if ['video'].include?(@art_piece.format_type)
 
 
 - content_for :css do
@@ -26,3 +31,13 @@
   #artwork
     #nail.c
       %iframe{:src => url, :frameborder => "0", :border => "0", :scrolling => "no"}
+
+- unless @art_piece.new_record?
+  / ARTWORK INFORMATION
+  #placard
+    #placard_area
+      %h1= !@art_piece.title.blank? ? @art_piece.title : t.art_pieces.show.placard.title_unknown
+      %h5= !@art_piece.artist.blank? ? @art_piece.artist : t.art_pieces.show.placard.artist_unknown
+      %p= !@art_piece.media.blank? ? @art_piece.media : '&nbsp;'
+      %p.details= details.join(' <span class="dot">&middot;</span> ')
+      %a.close{:href => 'javascript:;'}= t.art_pieces.show.placard.close
