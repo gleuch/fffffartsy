@@ -125,7 +125,7 @@ art_pieces:
         start:      '0%'
         middle:     '100%'
         end:        '200%'
-
+      add_info:     'Add Piece Details'
 
     art_info:
       heading:

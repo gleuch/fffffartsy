@@ -2,7 +2,8 @@
   = haml :'art_pieces/_gallery'
 
   #gallery_buttons
-    %a#piece_info.button{:href => 'javascript:;', :title => t.art_pieces.show.info}= t.art_pieces.show.info
+    - unless @art_piece.new_record? || (@art_piece.title.blank? && @art_piece.artist.blank?)
+      %a#piece_info.button{:href => 'javascript:;', :title => t.art_pieces.show.info}= t.art_pieces.show.info
     %a#add_piece.button{:href => '/', :title => t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
     %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
 

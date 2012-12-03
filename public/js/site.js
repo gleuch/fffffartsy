@@ -1,14 +1,15 @@
 jQuery(document).ready(function() {
   Fartsy.Preview.initialize();
 
-  jQuery('a#piece_info, #placard a.close').click(function() {
+  jQuery('a#piece_info, #placard a.close, #placard').click(function() {
     if (jQuery('#placard').hasClass('show')) {
       jQuery('#placard').removeClass('show');
-      setTimeout(function() {jQuery('#placard').hide();}, 2000);
+      setTimeout(function() {jQuery('#placard').hide();}, 200);
     } else {
       jQuery('#placard').show();
       setTimeout(function() {jQuery('#placard').addClass('show');}, 100);
     }
+    return false;
   });
 
 });

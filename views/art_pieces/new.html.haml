@@ -126,10 +126,14 @@
                 = t.art_pieces.form.customizations.scale.middle
                 .r= t.art_pieces.form.customizations.scale.end
 
+          .extra.tc
+            %button.art_piece_continue.smaller= t.art_pieces.form.customizations.add_info
+
         %fieldset.buttons.c
-          %button.art_piece_back.l= t.art_pieces.form.buttons.back
-          %button.art_piece_preview= t.art_pieces.form.buttons.preview
-          %button.art_piece_continue.r= t.art_pieces.form.buttons.continue
+          .c
+            %button.art_piece_back.l= t.art_pieces.form.buttons.back
+            %button.art_piece_preview= t.art_pieces.form.buttons.preview
+            %button.art_piece_submit.r= t.art_pieces.form.buttons.create
 
       .step{:'data-step' => 4}
         %fieldset
@@ -168,4 +172,4 @@
         %fieldset.buttons.c
           %button.art_piece_back.l= t.art_pieces.form.buttons.back
           %button.art_piece_preview= t.art_pieces.form.buttons.preview
-          %button#art_piece_submit.r= t.art_pieces.form.buttons.create
+          %button.art_piece_submit.r= t.art_pieces.form.buttons.create

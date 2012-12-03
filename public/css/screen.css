@@ -31,6 +31,7 @@ body.show_image {background: rgba(255,255,255,1);}
 #selection fieldset legend {display: block; font-weight: bold; font-size: 2.0em; padding: 0 0 15px 0; text-align: center; text-shadow: 0 1px 2px rgba(12,8,6,.32);}
 #selection fieldset.buttons {margin: 15px 0 0 0; padding: 15px 0 10px 0; border-top: 1px solid rgba(255,255,255,.32); text-align: center;}
 #selection fieldset .row {padding: 10px 0;}
+#selection fieldset .extra {padding: 6px 0 0 0;}
 #selection fieldset .row .row_label {clear: none; float: left; width: 85px; padding: 9px 15px 0 0; text-align: right; text-shadow: 0 1px 2px rgba(12,8,6,.32);}
 #selection fieldset .row .row_label label {font-size: 1.7em; font-weight: bold;}
 #selection fieldset .row .row_items {padding: 0 0 0 100px;}
@@ -42,8 +43,12 @@ body.show_image {background: rgba(255,255,255,1);}
 #selection fieldset .row .row_items select:focus {background-color: rgba(255,255,255,1); color: rgba(12,8,6,1);}
 #selection fieldset .row .row_items p.note {font-size: 1.2em; color: rgba(255,255,255,.72); padding: 5px 0 0 0; font-style: italic;}
 #selection .step[data-step='1'] .row_items {text-align: center; padding: 0;}
-#selection .step button, #selection .step input[type=submit] {display: inline-block; font-weight: bold; font-size: 2.0em; margin: 0 5px; padding: 6px 12px; background: rgba(255,255,0,1); border: 1px solid transparent; border-radius: 5px; box-shadow: 0 3px 5px rgba(12,8,6,.12); -webkit-transition: background-color .2s ease-in;}
+#selection .step button, #selection .step input[type=submit] {display: inline-block; font-weight: bold; font-size: 2.0em; margin: 0 5px; padding: 6px 12px; background: rgba(255,255,0,1); border: 1px solid transparent; border-radius: 5px; box-shadow: 0 3px 5px rgba(12,8,6,.12); -webkit-transition: background-color .2s ease-in; -moz-transition: background-color .2s ease-in; -o-transition: background-color .2s ease-in; transition: background-color .2s ease-in;}
 #selection .step button:hover, #selection .step input[type=submit]:hover, #selection .step button:focus, #selection .step input[type=submit]:focus {background: rgba(255,255,255,1); cursor: pointer;}
+#selection .step fieldset.buttons button.art_piece_preview {background: rgba(212,212,212,1);}
+#selection .step button.smaller {font-size: 1.4em; padding: 4px 8px; background: rgba(212,212,212,1);}
+#selection .step button:hover, #selection .step input[type=submit]:hover, #selection .step button:focus, #selection .step input[type=submit]:focus {background: rgba(255,255,255,1); cursor: pointer;}
+
 #selection fieldset .piece_dimension {width: 230px;}
 #selection fieldset .piece_dimension .row_items input[type=text], #selection fieldset .piece_dimension .row .row_items select {width: 120px;}
 #selection fieldset .row .row_items.range_length .wrap span {display: inline-block; padding: 0 0 0 5px; font-size: 1.5em; font-weight: bold; vertical-align: bottom;}
