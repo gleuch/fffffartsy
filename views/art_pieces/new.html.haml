@@ -162,12 +162,11 @@
               %label{:for => 'art_piece_media'}= t.art_pieces.form.art_info.labels.media
             .row_items
               %input#art_piece_media{:type => 'text', :name => 'art_piece[media]', :value => media}
-          - if false
-            .row.c
-              .row_label
-                %label{:for => 'art_piece_dimensions'}= t.art_pieces.form.art_info.labels.dimensions
-              .row_items
-                %input#art_piece_dimensions{:type => 'text', :name => 'art_piece[dimensions]', :value => dimensions}
+          .row.c
+            .row_label
+              %label{:for => 'art_piece_dimensions'}= t.art_pieces.form.art_info.labels.dimensions
+            .row_items
+              %input#art_piece_dimensions{:type => 'text', :name => 'art_piece[dimensions]', :value => dimensions}
 
         %fieldset.buttons.c
           %button.art_piece_back.l= t.art_pieces.form.buttons.back
