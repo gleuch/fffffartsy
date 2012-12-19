@@ -56,8 +56,8 @@ helpers do
 
     orig_screen_width, orig_screen_height = (sw || 375), 281
     screen_width, screen_height = (orig_screen_width * scale).ceil, (orig_screen_height * scale).ceil
-    screen_zoom_ratio = '%0.02f' % (screen_width / piece_width.to_f)
-    screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
+    screen_zoom_ratio = (screen_width / piece_width.to_f)
+    screen_zoom_pct = (100 / screen_zoom_ratio.to_f)
 
     # Set default screen dimensions to 16:9 if tv mode
     if p.format_type == 'video'
@@ -91,11 +91,11 @@ helpers do
         :media => 'only screen'
       },
       :screen_medium => {
-        :ratio => 0.86,
+        :ratio => 0.83,
         :media => 'only screen and (max-width: 700px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
       },
       :screen_small => {
-        :ratio => 0.8,
+        :ratio => 0.77,
         :media => 'only screen and (max-width: 650px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
       },
       :screen_smaller => {
