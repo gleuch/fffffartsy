@@ -1,5 +1,7 @@
 # Show art piece
-def render_piece
+def render_piece(*args)
+  opts = args.extract_options! rescue {}
+
   results = Proc.new {
     @art_piece ||= ArtPiece.find(params[:id]) rescue nil
     raise ActiveRecord::RecordNotFound if @art_piece.blank?
@@ -8,11 +10,15 @@ def render_piece
     @next_art_piece = @art_piece.next rescue nil
   }
 
-  
   respond_to do |format|
     format.html {
       results.call
-      haml :'art_pieces/show'
+      case opts[:as].to_s
+        when 'embed'
+          haml :'art_pieces/embed'
+        else
+          haml :'art_pieces/show'
+      end
     }
   end
 end
@@ -33,11 +39,12 @@ end
 # Show random piece
 get "/pieces/random" do
   results = Proc.new {
-    @art_piece = ArtPiece.order('RAND()').first rescue nil
-    raise ActiveRecord::RecordNotFound if @art_piece.blank?
+    loop {
+      @art_piece = ArtPiece.order('RAND()').first rescue nil
+      break unless @art_piece.blank?
+    }
   }
 
-  
   respond_to do |format|
     format.html {
       results.call
@@ -66,6 +73,10 @@ get "/pieces/:id/:format_type" do
       haml "art_pieces/#{params[:format_type]}".to_sym
     }
   end
+end
+
+get "/pieces/embed/:id" do
+  render_piece(:as => :embed)
 end
 
 get "/pieces/:id/:slug" do

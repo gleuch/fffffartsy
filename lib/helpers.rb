@@ -55,22 +55,22 @@ helpers do
     scale = p.scale * v[:ratio]
 
     orig_screen_width, orig_screen_height = (sw || 375), 281
-    screen_width, screen_height = (orig_screen_width * scale).to_i, (orig_screen_height * scale).to_i
+    screen_width, screen_height = (orig_screen_width * scale).ceil, (orig_screen_height * scale).ceil
     screen_zoom_ratio = '%0.02f' % (screen_width / piece_width.to_f)
     screen_zoom_pct = '%0.02f' % (100 / screen_zoom_ratio.to_f)
 
     # Set default screen dimensions to 16:9 if tv mode
     if p.format_type == 'video'
-     screen_height = ((9 * screen_width) / 16.to_f).to_i rescue 211
+     screen_height = ((9 * screen_width) / 16.to_f).ceil rescue 211
     elsif !p.height.blank?
-      screen_height = (screen_zoom_ratio.to_f * piece_height).to_i rescue 281
+      screen_height = (screen_zoom_ratio.to_f * piece_height).ceil rescue 281
     end
 
     if screen_height <= (300 * scale).to_i
-      bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).to_i
-      bg_pos_y = (475 * (v[:bg_ratio] || v[:ratio])).to_i
-      adjusted_height_scale_diff = (2 - scale) * ( (1 - v[:ratio]) * ( ((orig_screen_width / piece_width.to_f) * piece_height) / 2.to_f) ).to_i
-      pos_y = ( (80 * (2 - scale)) - adjusted_height_scale_diff ).to_i
+      bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).ceil
+      bg_pos_y = (475 * (v[:bg_ratio] || v[:ratio])).ceil
+      adjusted_height_scale_diff = (2 - scale) * ( (1 - v[:ratio]) * ( ((orig_screen_width / piece_width.to_f) * piece_height) / 2.to_f) ).ceil
+      pos_y = ( (80 * (2 - scale)) - adjusted_height_scale_diff ).ceil
 
       "<style type=\"text/css\", media=\"#{v[:media]}\">
         #{v[:css]}
@@ -79,7 +79,7 @@ helpers do
         #gallery {background-size: #{bg_width}px auto; background-position: center #{bg_pos_y}px;}
        </style>"
     else
-      adjusted_screen_width = (screen_width * (280 / screen_height.to_f)).to_i
+      adjusted_screen_width = (screen_width * (280 / screen_height.to_f)).ceil
       set_media_size(p,v,adjusted_screen_width,1) unless i > 0
     end
   end

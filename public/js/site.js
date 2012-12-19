@@ -169,30 +169,30 @@ var Fartsy = {
           f = jQuery('#art_piece_format').val(),
           orig_screen_width = (sw || 375), 
           orig_screen_height = 281,
-          screen_width = Math.round(orig_screen_width * scale),
-          screen_height = Math.round(orig_screen_height * scale),
+          screen_width = Math.ceil(orig_screen_width * scale),
+          screen_height = Math.ceil(orig_screen_height * scale),
           screen_zoom_ratio = (screen_width / w),
           screen_zoom_pct = (100 / screen_zoom_ratio);
 
       // Set default screen dimensions to 16:9 if tv mode
       if (Fartsy.Preview.formats[f] == 'video') {
-        screen_height = Math.round((9 * screen_width) / 16)
+        screen_height = Math.ceil((9 * screen_width) / 16)
       } else {
-        screen_height = Math.round(screen_zoom_ratio * h)
+        screen_height = Math.ceil(screen_zoom_ratio * h)
       }
 
       if (screen_height <= (300 * scale)) {
-        var bg_width = Math.round(6578 * scale),
-            bg_pos_y = Math.round(475 * scale),
-            adjusted_height_scale_diff = Math.round( (2 - scale) * (1 - ratio) * (((orig_screen_width / w) * h) / 2) )
-            pos_y = Math.round((80 * (2 - scale)) - adjusted_height_scale_diff);
+        var bg_width = Math.ceil(6578 * scale),
+            bg_pos_y = Math.ceil(475 * scale),
+            adjusted_height_scale_diff = Math.ceil( (2 - scale) * (1 - ratio) * (((orig_screen_width / w) * h) / 2) )
+            pos_y = Math.ceil((80 * (2 - scale)) - adjusted_height_scale_diff);
 
         jQuery('#artwork').css({'width' : screen_width +'px', 'height' : screen_height +'px', 'top' : pos_y+'px'});
         jQuery('#artwork iframe').css({'width' : screen_zoom_pct.toFixed(2)+'%', 'height' : screen_zoom_pct.toFixed(2)+'%', 'zoom' : screen_zoom_ratio.toFixed(2), 'transform' : 'scale('+ screen_zoom_ratio.toFixed(2) +')', '-moz-transform' : 'scale('+ screen_zoom_ratio.toFixed(2) +')', '-o-transform' : 'scale('+ screen_zoom_ratio.toFixed(2) +')', '-webkit-transform' : 'scale('+ screen_zoom_ratio.toFixed(2) +')'});
         // jQuery('#gallery').css({'background-size' : bg_width +'px auto', 'background-position' : 'center '+ bg_pos_y +'px'});
 
       } else {
-        screen_width = Math.round(screen_width * (280 / screen_height));
+        screen_width = Math.ceil(screen_width * (280 / screen_height));
         if (i < 1) Fartsy.Preview.set_dimensions(w,h,screen_width,1);
       }
     }

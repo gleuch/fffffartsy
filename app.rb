@@ -51,6 +51,9 @@ configure do
   use Rack::Session::Cookie, :key => 'fartse_rack_key', :secret => configatron.cookie_secret, :path => '/', :expire_after => 21600
   set :sessions => true
 
+  # Allow iframe embedding
+  set :protection, :except => :frame_options
+
   # --- I18N -------------------------------
   APP_LOCALES = {
     :en => 'English',
