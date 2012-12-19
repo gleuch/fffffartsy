@@ -90,6 +90,10 @@ helpers do
         :ratio => 1,
         :media => 'only screen'
       },
+      :screen_medium => {
+        :ratio => 0.86,
+        :media => 'only screen and (max-width: 700px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
+      },
       :screen_small => {
         :ratio => 0.8,
         :media => 'only screen and (max-width: 650px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
