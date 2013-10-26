@@ -27,12 +27,12 @@ helpers do
 
   def default_art_piece
     pieces = [
-      {:width => 500, :height => 375, :format => 0, :frame => 0, :url => 'http://fffff.at/files/2011/08/digital-purchase-takedown-notice-500x375.png?e83a2c'},
-      {:width => 300, :height => 300, :format => 0, :frame => 0, :url => 'https://twimg0-a.akamaihd.net/profile_images/1094166180/t.jpg'},
-      {:width => 720, :height => 480, :format => 0, :frame => 0, :url => 'http://www.evan-roth.com/photos//data/dlectricity-2012/web/thelegacyliveson-shot2-nlz-720px.gif'},
-      {:width => 323, :height => 500, :format => 0, :frame => 0, :url => 'http://fffff.at/files/2012/06/one_of_-323x500.jpg?e83a2c'},
-      {:width => 1500, :height => 1000, :format => 0, :frame => 0, :url => 'http://datenform.de/blog/wp-content/uploads/2012/02/OI-bright-DAM-1.jpg'},
-      {:width => 600, :height => 450, :format => 0, :frame => 0, :url => 'http://fffff.at/fuckflickr/data/randy/web/cassette.jpg?e83a2c'},
+      {width: 500,  height: 375,  format: 0, frame: 0, url: 'http://fffff.at/files/2011/08/digital-purchase-takedown-notice-500x375.png?e83a2c'},
+      {width: 300,  height: 300,  format: 0, frame: 0, url: 'https://twimg0-a.akamaihd.net/profile_images/1094166180/t.jpg'},
+      {width: 720,  height: 480,  format: 0, frame: 0, url: 'http://www.evan-roth.com/photos//data/dlectricity-2012/web/thelegacyliveson-shot2-nlz-720px.gif'},
+      {width: 323,  height: 500,  format: 0, frame: 0, url: 'http://fffff.at/files/2012/06/one_of_-323x500.jpg?e83a2c'},
+      {width: 1500, height: 1000, format: 0, frame: 0, url: 'http://datenform.de/blog/wp-content/uploads/2012/02/OI-bright-DAM-1.jpg'},
+      {width: 600,  height: 450,  format: 0, frame: 0, url: 'http://fffff.at/fuckflickr/data/randy/web/cassette.jpg?e83a2c'},
     ]
     r = rand(pieces.length)
     @art_piece = ArtPiece.new(pieces[r])
@@ -86,29 +86,29 @@ helpers do
 
   def media_sizes
     {
-      :screen_normal => {
-        :ratio => 1,
-        :media => 'only screen'
+      screen_normal: {
+        ratio: 1,
+        media: 'only screen'
       },
-      :screen_medium => {
-        :ratio => 0.83,
-        :media => 'only screen and (max-width: 700px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
+      screen_medium: {
+        ratio: 0.83,
+        media: 'only screen and (max-width: 700px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
       },
-      :screen_small => {
-        :ratio => 0.77,
-        :media => 'only screen and (max-width: 650px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
+      screen_small: {
+        ratio: 0.77,
+        media: 'only screen and (max-width: 650px)'#', only screen and (max-width: 1300px) and (-webkit-min-device-pixel-ratio: 2)'
       },
-      :screen_smaller => {
-        :ratio => 0.69,
-        :media => 'only screen and (max-width: 550px)'#', only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 2)'
+      screen_smaller: {
+        ratio: 0.69,
+        media: 'only screen and (max-width: 550px)'#', only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 2)'
       },
-      :screen_smallest => {
-        :ratio => 0.4,
-        :media => 'only screen and (max-width: 450px)'#', only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2)'
+      screen_smallest: {
+        ratio: 0.4,
+        media: 'only screen and (max-width: 450px)'#', only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2)'
       },
-      :screen_mobile => {
-        :ratio => 0.4,
-        :media => 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
+      screen_mobile: {
+        ratio: 0.4,
+        media: 'only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)'
       }
     }
   end
@@ -124,23 +124,17 @@ helpers do
 
 
   def set_template_defaults
-    @meta = {
-      :description => t.template.meta.description,
-      :robots => "index,follow"
-    }
+    @meta, @title, @body_classes = {description: t.template.meta.description, robots: "index,follow"}, nil, []
     
-    @title = nil
-    @body_classes = []
-
     @add_javascripts = [
-      {:src => "/js/jquery-1.8.3.min.js"},
-      {:src => "/js/site.js"}
+      {src: "/js/jquery-1.8.3.min.js"},
+      {src: "/js/site.js"}
     ]
 
     @add_stylesheets = [
-      {:href => "/css/default.css"},
-      {:href => "/css/screen.css", :media => "only screen"},
-      {:href => "/css/mobile.css", :media => "only screen"}
+      {href: "/css/default.css"},
+      {href: "/css/screen.css", media: "only screen"},
+      {href: "/css/mobile.css", media: "only screen"}
     ]
 
     # flash.now[:info] = t.template.alert.high_traffic
@@ -157,7 +151,7 @@ helpers do
     begin
       haml("#{f.to_s}.#{locale}".to_sym)
     rescue
-      Audit.warning(:loggable => Sinatra, :message => "Locale HAML: Missing language file: #{f}", :script => f)
+      Audit.warning(loggable: Sinatra, message: "Locale HAML: Missing language file: #{f}", script: f)
       (dev ? "<p><em>Error:</em> Missing language file for #{f}.</p>" : '')
     end
   end

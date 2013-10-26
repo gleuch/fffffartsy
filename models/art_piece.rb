@@ -27,13 +27,15 @@ class ArtPiece < ActiveRecord::Base
   extend FriendlyId
   friendly_id :nice_url, use: :slugged
 
+  default_scope where(active: true)
+
 
   def previous(offset = 0)
-    self.class.first(:conditions => ['id < ?', self.id], :limit => 1, :offset => offset, :order => "id DESC")
+    self.class.first(conditions: ['id < ?', self.id], limit: 1, offset: offset, order: "id DESC")
   end
 
   def next(offset = 0)
-    self.class.first(:conditions => ['id > ?', self.id], :limit => 1, :offset => offset, :order => "id ASC")
+    self.class.first(conditions: ['id > ?', self.id], limit: 1, offset: offset, order: "id ASC")
   end
 
 

@@ -51,7 +51,7 @@ var Fartsy = {
           if (u && u != '' && u.match(/^http/i)) {
             Fartsy.Preview.step_to(3);
           } else {
-            alert('Please enter a valid url.');
+            alert('Please enter a valid URL.');
           }
 
           return false;
@@ -121,9 +121,9 @@ var Fartsy = {
           a = jQuery('#artwork'), x = jQuery('#artwork iframe'), g = jQuery('#gallery'),
           err = false;
 
-      if (!err && !(f && f != '' && Fartsy.Preview.formats[f])) err = 'Please select the proper format.';
-      if (!err && !(u && u != '' && u.match(/^http/i))) err = 'Please enter a valid url.';
-      if (!err && Fartsy.Preview.formats[f] == 'video' && !(u && u != '' && (u.match(/youtube\.com|youtu\.be|vimeo\.com/i) || u.match(/\.(flv|mp4|mov)$/i) ))) err = 'Please enter a YouTube, Vimeo, or raw (flv, mov, mp4) video url.';
+      if (!err && !(f && f != '' && Fartsy.Preview.formats[f])) err = 'Please select a proper format.';
+      if (!err && !(u && u != '' && u.match(/^http/i))) err = 'Please enter a valid URL.';
+      if (!err && Fartsy.Preview.formats[f] == 'video' && !(u && u != '' && (u.match(/youtube\.com|youtu\.be|vimeo\.com/i) || u.match(/\.(flv|mp4|mov)$/i) ))) err = 'Please enter a YouTube, Vimeo, or raw (flv, mov, mp4) video URL.';
 
       if (!err || err == '') {
         g.attr('data-format', Fartsy.Preview.formats[f]);

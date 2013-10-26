@@ -1,41 +1,59 @@
 !!!
-%html{:lang => (session[:locale] || 'en')}
+%html{lang: (session[:locale] || 'en')}
   /
-    SPEED PROJECT BY GREG LEUCH
-    IDEA FROM EVAN ROTH
-    http://fffff.at
-    2012 11 18
+
+    \
+    \
+    \
+    _|_|_|_|  _|_|_|_|  _|_|_|_|  _|_|_|_|  _|_|_|_|    _|_|    _|_|_|    _|_|_|_|_|    _|_|_|  _|      _|
+    _|        _|        _|        _|        _|        _|    _|  _|    _|      _|      _|          _|  _|  
+    _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|    _|_|_|_|  _|_|_|        _|        _|_|        _|    
+    _|        _|        _|        _|        _|        _|    _|  _|    _|      _|            _|      _|    
+    _|        _|        _|        _|        _|        _|    _|  _|    _|      _|      _|_|_|        _|    
+    \
+    \
+    = "http://fffffartsy.com/".center(102)
+    \
+    = "-"*102
+    \
+    = t.template.header.credits1.center(102)
+    = t.template.header.credits2.center(102)
+    \
+    \
+    = t.template.header.credits3.center(102)
+    \
+
   %head
-    %meta{:charset => "utf-8"}
+    %meta{charset:"utf-8"}
     %title= page_title
-    %meta{:name => "description", :content => @meta[:description]}
-    %meta{:name => "author", :content => t.template.meta.author}
-    %meta{:name => "robots", :content => @meta[:robots]}
+    %meta{name: "description", content: @meta[:description]}
+    %meta{name: "author", content: t.template.meta.author}
+    %meta{name: "robots", content: @meta[:robots]}
     - unless @canonical_url.blank?
-      %meta{:name => 'canonical', :content => @canonical_url.gsub(/\s/m, '_')}
+      %meta{name: 'canonical', content: @canonical_url.gsub(/\s/m, '_')}
 
     = yield_content(:meta) if content_for?(:meta)
 
-    %link{:rel => 'shortcut icon', :href => "/favicon.ico"}
+    %link{rel: 'shortcut icon', href: "/favicon.png"}
 
     <!--[if lt IE 9]>
-    %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    %script{src: "http://html5shim.googlecode.com/svn/trunk/html5.js"}
     <![endif]-->
 
-    %meta{:name => "viewport", :content => "target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"}
-    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
-    %meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
+    %meta{name: "viewport", content: "target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"}
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}
+    %meta{name: "apple-mobile-web-app-status-bar-style", content: "black"}
 
 
     - @add_stylesheets.each do |v|
-      %link{:rel => "stylesheet", :type => "text/css", :href => v[:href], :media => v[:media]}
+      %link{rel: "stylesheet", type: "text/css", href: v[:href], media: v[:media]}
 
     = yield_content(:css) if content_for?(:css)
 
     - @add_javascripts.each do |v|
-      %script{:type => "text/javascript", :src => v[:src]}
+      %script{type: "text/javascript", src: v[:src]}
 
-    %script{:type => "text/javascript"}
+    %script{type: "text/javascript"}
       - unless prod?
         var _gaq = {push:function(a) {console.log('GA: '+ a.toString());}};
       - else
@@ -44,7 +62,10 @@
 
     = yield_content(:js) if content_for?(:js)
 
-  %body{:class => @body_classes.join(' ')}
+  %body{class: @body_classes.join(' ')}
+    #fb-root
+    %script (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+
     #container
       = yield_content(:page_top) if content_for?(:page_top)
 
@@ -52,7 +73,7 @@
       %header#header
         .container.c
           %h1#logo.print
-            %a{:href => "/", :title => t.name}= t.name
+            %a{href: "/", title: t.name}= t.name
 
           - if flashes?
             %aside#flashes
@@ -69,6 +90,11 @@
 
       %footer#footer
         .container.c
+          #social_buttons
+            .fb-like.social-btn{'data-href' => "http://fffffartsy.com", 'data-colorscheme' => 'light', 'data-layout' => "button_count", 'data-action' => "like", 'data-show-faces' => false, 'data-send' => false, 'data-height' => 35}
+            .tweet-btn.social-btn
+              %a.twitter-share-button{href: "https://twitter.com/share", 'data-url' => "http://ffffffartsy.com", 'data-text' => '', 'data-via' => "", 'data-related' => "ffffffat", 'data-hashtags' => ""} Tweet
+
           %aside#credits= t.template.footer.credits( l(Time.now, '%Y') )
 
       = haml :'layouts/_page_bottom'

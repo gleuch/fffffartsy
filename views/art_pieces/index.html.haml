@@ -1,14 +1,16 @@
+- @body_classes << 'indexlist'
+
 #content_area
   %h1
-    %a{:href => '/'}= t.art_pieces.index.heading
+    %a{href: '/'}= t.art_pieces.index.heading
 
   - unless @art_pieces.blank?
     %ul#art_list
-      - @art_pieces.each do |p|
+      - (@art_pieces * 100).each do |p|
         %li{:'data-id' => p.id, :'data-url' => p.url, :'data-frame' => p.frame_type, :'data-gallery' => p.gallery_type, :'data-audience' => p.audience_type, :'data-format' => p.format_type}
           %strong #{t.art_pieces.form.format[ p.format_type ]}:
           - unless p.url.blank?
-            %a{:href => p.piece_url}= p.nice_url
+            %a{href: p.piece_url}= p.nice_url
           - else
             = t.art_pieces.index.art_piece.missing_url
 
@@ -20,5 +22,5 @@
 
 
 #gallery_buttons
-  %a#add_piece.button{:href => '/', :title => t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
-  %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
+  %a#add_piece.button{href: '/', title: t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
+  %a#random_piece.button{href: '/pieces/random', title: t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece

@@ -1,27 +1,31 @@
 name:           "FFFFFARTSY"
-title_name:     "FFFFFARTSY"
+title_name:     "FFFFFARTSY - Adding the F[ree] to Art[sy]"
 
 defaults:
 
 
 # --- MODELS ----------------------------------------------
 models:
-  art_pieces:     Art Pieces
+  art_pieces:     "Art Pieces"
 
 
 # --- TEMPLATE TEXT ---------------------------------------
 template:
   meta:
     author:           "F.A.T. Lab @ http://fffff.at"
-    description:      ""
+    description:      "Artist need a better way to show their work online."
 
   search:
     placeholder:      "Search..."
 
+  header:
+    credits1:         "Concept by Evan Roth <http://evan-roth.com>. Code by Greg Leuch <http://gleu.ch>."
+    credits2:         "A Free Art & Technology (FAT Lab) project."
+    credits3:         "More info: http://fffff.at/fffffart-sy  |  Code: http://github.com/gleuch/fffffartsy"
   footer:
-    credits:          A <a href="http://fffff.at" rel="follow">F.A.T. Lab</a> project &ndash; Copyfree %1
+    credits:          'A <a href="http://fffff.at" rel="follow">F.A.T. Lab</a> project by <a href="http://gleu.ch">Greg Leuch</a> &amp; <a href="http://evan-roth.com">Evan Roth</a> &nbsp;&ndash;&nbsp; Non-commercial &amp; Copyfree. 2012 &nbsp;&ndash;&nbsp; <a href="http://fffff.at/fffffartsy">More Info&hellip;</a>'
 
-  mobile_notice:      Display issues may occur when viewing with mobile devices.
+  mobile_notice:      "Display issues may occur when viewing with mobile devices."
 
 art_pieces:
   model:
@@ -92,7 +96,7 @@ art_pieces:
     cancel_preview: 'Continue being artsy-fartsy&hellip;'
 
     format:
-      heading:  'What is the media?'
+      heading:  'What type of media do you want to display?'
       
       image:    'Image'
       video:    'Video'
@@ -125,7 +129,7 @@ art_pieces:
         start:      '0%'
         middle:     '100%'
         end:        '200%'
-      add_info:     'Add Piece Details'
+      add_info:     'Add Context Information'
 
     art_info:
       heading:

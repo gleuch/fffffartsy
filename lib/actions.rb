@@ -25,7 +25,7 @@ end
 
 get "/pieces" do
   results = Proc.new {
-    @art_pieces = ArtPiece.order('created_at desc').paginate(:page => params[:page] || 1, :per_page => 50)
+    @art_pieces = ArtPiece.order('created_at desc').paginate(page: params[:page] || 1, per_page: 50)
   }
 
   respond_to do |format|
@@ -75,8 +75,12 @@ get "/pieces/:id/:format_type" do
   end
 end
 
+get "/pieces/embed/:id/:slug" do
+  render_piece(as: :embed)
+end
+
 get "/pieces/embed/:id" do
-  render_piece(:as => :embed)
+  render_piece(as: :embed)
 end
 
 get "/pieces/:id/:slug" do

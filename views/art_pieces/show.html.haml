@@ -1,19 +1,21 @@
+- @body_classes << 'opac_footer'
+
 .c
   = haml :'art_pieces/_gallery'
 
   #gallery_buttons
     - unless @art_piece.new_record? || (@art_piece.title.blank? && @art_piece.artist.blank?)
-      %a#piece_info.button{:href => 'javascript:;', :title => t.art_pieces.show.info}= t.art_pieces.show.info
-    %a#add_piece.button{:href => '/', :title => t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
-    %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
+      %a#piece_info.button{href: 'javascript:;', title: t.art_pieces.show.info}= t.art_pieces.show.info
+    %a#add_piece.button{href: '/', title: t.art_pieces.show.add_piece}= t.art_pieces.show.add_piece
+    %a#random_piece.button{href: '/pieces/random', title: t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
 
   #navigation_buttons
     - unless @prev_art_piece.blank?
-      %a#prev_art_piece{:href => @prev_art_piece.piece_url, :title => t.art_pieces.show.prev_piece}= t.art_pieces.show.prev_piece
+      %a#prev_art_piece{href: @prev_art_piece.piece_url, title: t.art_pieces.show.prev_piece}= t.art_pieces.show.prev_piece
     - else
-      %span#prev_art_piece{:title => t.art_pieces.show.prev_piece_disabled}= t.art_pieces.show.prev_piece_disabled
+      %span#prev_art_piece{title: t.art_pieces.show.prev_piece_disabled}= t.art_pieces.show.prev_piece_disabled
 
     - unless @next_art_piece.blank?
-      %a#next_art_piece{:href => @next_art_piece.piece_url, :title => t.art_pieces.show.next_piece}= t.art_pieces.show.next_piece
+      %a#next_art_piece{href: @next_art_piece.piece_url, title: t.art_pieces.show.next_piece}= t.art_pieces.show.next_piece
     - else
-      %span#next_art_piece{:title => t.art_pieces.show.next_piece_disabled}= t.art_pieces.show.next_piece_disabled
+      %span#next_art_piece{title: t.art_pieces.show.next_piece_disabled}= t.art_pieces.show.next_piece_disabled

@@ -1,5 +1,5 @@
-- @body_classes << 'show_image'
-- @add_javascripts << {:src => 'http://vhx.tv/javascripts/jquery.swfobject-1.1.1.js'}
+- @body_classes << 'show_image' << 'hide_footer'
+- @add_javascripts << {src: 'http://vhx.tv/javascripts/jquery.swfobject-1.1.1.js'}
 
 - url = @art_piece.url unless @art_piece.blank?
 - url ||= params[:url]
@@ -8,7 +8,7 @@
   - if true
     #megaplaya
 
-    %script{:type => 'text/javascript'}
+    %script{type: 'text/javascript'}
       :plain
         var megaplaya = false;
         jQuery(document).ready(function() {
@@ -31,9 +31,9 @@
   - else
     - vhx_url = "http://vhx.tv/embed/megaplaya.swf?videos=#{CGI.escape(url)}"
 
-    %object{:data => vhx_url, :type => "application/x-shockwave-flash", :width => '100%', :height => '100%'}
-      %param{:name => "allowFullScreen", :value => "true"}
-      %param{:name => "allowScriptAccess", :value => "always"}
-      %param{:name => "movie", :value => vhx_url}
-      %param{:name => "wmode", :value => "opaque"}
+    %object{data: vhx_url, type: "application/x-shockwave-flash", width: '100%', height: '100%'}
+      %param{name: "allowFullScreen", value: "true"}
+      %param{name: "allowScriptAccess", value: "always"}
+      %param{name: "movie", value: vhx_url}
+      %param{name: "wmode", value: "opaque"}
 

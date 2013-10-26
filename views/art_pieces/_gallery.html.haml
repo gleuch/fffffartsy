@@ -30,7 +30,7 @@
   / THE ARTWORK
   #artwork
     #nail.c
-      %iframe{:src => url, :frameborder => "0", :border => "0", :scrolling => "no"}
+      %iframe{src: url, frameborder: "0", border: "0", scrolling: "no"}
 
 - unless @art_piece.new_record? || (@art_piece.title.blank? && @art_piece.artist.blank?)
   / ARTWORK INFORMATION
@@ -40,4 +40,4 @@
       %h5= !@art_piece.artist.blank? ? @art_piece.artist : t.art_pieces.show.placard.artist_unknown
       %p= !@art_piece.media.blank? ? @art_piece.media : '&nbsp;'
       %p.details= details.join(' <span class="dot">&middot;</span> ')
-      %a.close{:href => 'javascript:;'}= t.art_pieces.show.placard.close
+      %a.close{href: 'javascript:;'}= t.art_pieces.show.placard.close

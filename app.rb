@@ -48,15 +48,15 @@ configure do
 
 
   FLASH_TYPES = [:warning, :notice, :success, :error]
-  use Rack::Session::Cookie, :key => 'fartse_rack_key', :secret => configatron.cookie_secret, :path => '/', :expire_after => 21600
+  use Rack::Session::Cookie, key: 'fartse_rack_key', secret: configatron.cookie_secret, path: '/', expire_after: 21600
   set :sessions => true
 
   # Allow iframe embedding
-  set :protection, :except => :frame_options
+  set :protection, except: :frame_options
 
   # --- I18N -------------------------------
   APP_LOCALES = {
-    :en => 'English',
+    en: 'English',
   }
 
   Sinatra::Application.register Sinatra::R18n

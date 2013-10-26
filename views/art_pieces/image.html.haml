@@ -1,7 +1,7 @@
-- @body_classes << 'show_image'
+- @body_classes << 'show_image' << 'hide_footer'
 
 - unless @art_piece.blank?
-  %img{:src => @art_piece.url, :alt => '', :title => '', :width => @art_piece.width, :height => @art_piece.height}
+  %img{src: @art_piece.url, alt: '', title: '', width: @art_piece.width, height: @art_piece.height}
 
 - else
-  %img{:src => params[:url], :alt => '', :title => ''}
+  %img{src: params[:url], alt: '', title: ''}

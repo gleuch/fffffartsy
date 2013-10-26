@@ -1,4 +1,5 @@
-- @add_javascripts << {:src => '/js/html5slider.js'}
+- @body_classes << 'create'
+- @add_javascripts << {src: '/js/html5slider.js'}
 
 - url = params[:art_piece][:url] rescue nil
 - width = params[:art_piece][:width] rescue 800
@@ -14,7 +15,7 @@
 - scale = params[:art_piece][:scale] rescue 1
 
 
-%script{:type => 'text/javascript'}
+%script{type: 'text/javascript'}
   Fartsy.Preview.formats = #{ArtPiece::FORMATS.to_json};
   Fartsy.Preview.frames = #{ArtPiece::FRAMES.to_json};
   Fartsy.Preview.galleries = #{ArtPiece::GALLERIES.to_json};
@@ -24,16 +25,16 @@
   = haml :'art_pieces/_gallery'
 
   #gallery_buttons
-    %a#random_piece.button{:href => '/pieces/random', :title => t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
+    %a#random_piece.button{href: '/pieces/random', title: t.art_pieces.show.random_piece}= t.art_pieces.show.random_piece
 
 #selection
-  %a#selection_view{:href => 'javascript:;'}= t.art_pieces.form.cancel_preview
+  %a#selection_view.button{href: 'javascript:;'}= t.art_pieces.form.cancel_preview
 
   #selection_area
     %h1= t.art_pieces.form.heading
 
-    %form#art_piece_form{:action => '/piece/create', :method => :post, :'data-step-index' => 1, :'data-format' => @art_piece.format_type}
-      %input#art_piece_format{:type => 'hidden', :name => 'art_piece[format]', :value => @art_piece.format}
+    %form#art_piece_form{action: '/piece/create', method: :post, :'data-step-index' => 1, :'data-format' => @art_piece.format_type}
+      %input#art_piece_format{type: 'hidden', name: 'art_piece[format]', value: @art_piece.format}
 
       .step{:'data-step' => 1}
         %fieldset
@@ -41,7 +42,7 @@
           .row.c
             .row_items
               - ArtPiece::FORMATS.each do |k,v|
-                %button{:value => k}= t.art_pieces.form.format[v]
+                %button{value: k}= t.art_pieces.form.format[v]
 
       .step{:'data-step' => 2}
         %fieldset
@@ -52,22 +53,22 @@
 
           .row.c
             .row_label
-              %label{:for => 'art_piece_url'}= t.art_pieces.form.piece.labels.url
+              %label{for: 'art_piece_url'}= t.art_pieces.form.piece.labels.url
             .row_items
-              %input#art_piece_url{:type => 'text', :name => 'art_piece[url]', :value => url}
+              %input#art_piece_url{type: 'text', name: 'art_piece[url]', value: url}
               %p.note.hide_for_image.hide_for_web_page= t.art_pieces.form.piece.video_url_note
 
           .row.c.hide_for_image.hide_for_video
             .l.piece_dimension
               .row_label
-                %label{:for => 'art_piece_width'}= t.art_pieces.form.piece.labels.width
+                %label{for: 'art_piece_width'}= t.art_pieces.form.piece.labels.width
               .row_items
-                %input#art_piece_width{:type => 'text', :name => 'art_piece[width]', :value => width}
+                %input#art_piece_width{type: 'text', name: 'art_piece[width]', value: width}
             .l.piece_dimension
               .row_label
-                %label{:for => 'art_piece_height'}= t.art_pieces.form.piece.labels.height
+                %label{for: 'art_piece_height'}= t.art_pieces.form.piece.labels.height
               .row_items
-                %input#art_piece_height{:type => 'text', :name => 'art_piece[height]', :value => height}
+                %input#art_piece_height{type: 'text', name: 'art_piece[height]', value: height}
 
         %fieldset.buttons.c
           %button.art_piece_back.l= t.art_pieces.form.buttons.back
@@ -84,42 +85,42 @@
           - if ArtPiece::GALLERIES.size > 1
             .row.c
               .row_label
-                %label{:for => 'art_piece_gallery'}= t.art_pieces.form.customizations.labels.gallery
+                %label{for: 'art_piece_gallery'}= t.art_pieces.form.customizations.labels.gallery
               .row_items
-                %select#art_piece_gallery{:name => 'art_piece[gallery]'}
+                %select#art_piece_gallery{name: 'art_piece[gallery]'}
                   - ArtPiece::GALLERIES.each do |k,v|
-                    %option{:value => k, :selected => (gallery == v)}= t.art_pieces.model.galleries[ v.to_s ]
+                    %option{value: k, selected: (gallery == v)}= t.art_pieces.model.galleries[ v.to_s ]
           - else
-            %input{:type => 'hidden', :name => 'art_piece[gallery]', :value => ArtPiece::GALLERIES.keys.first}
+            %input{type: 'hidden', name: 'art_piece[gallery]', value: ArtPiece::GALLERIES.keys.first}
 
           - if ArtPiece::FRAMES.size > 1
             .row.c
               .row_label
-                %label{:for => 'art_piece_frame'}= t.art_pieces.form.customizations.labels.frame
+                %label{for: 'art_piece_frame'}= t.art_pieces.form.customizations.labels.frame
               .row_items
-                %select#art_piece_frame{:name => 'art_piece[frame]'}
+                %select#art_piece_frame{name: 'art_piece[frame]'}
                   - ArtPiece::FRAMES.each do |k,v|
-                    %option{:value => k, :selected => (frame == v)}= t.art_pieces.model.frames[ v.to_s ]
+                    %option{value: k, selected: (frame == v)}= t.art_pieces.model.frames[ v.to_s ]
           - else
-            %input{:type => 'hidden', :name => 'art_piece[frame]', :value => ArtPiece::FRAMES.keys.first}
+            %input{type: 'hidden', name: 'art_piece[frame]', value: ArtPiece::FRAMES.keys.first}
 
           - if ArtPiece::AUDIENCES.size > 1
             .row.c
               .row_label
-                %label{:for => 'art_piece_audience'}= t.art_pieces.form.customizations.labels.audience
+                %label{for: 'art_piece_audience'}= t.art_pieces.form.customizations.labels.audience
               .row_items
-                %select#art_piece_audience{:name => 'art_piece[audience]'}
+                %select#art_piece_audience{name: 'art_piece[audience]'}
                   - ArtPiece::AUDIENCES.each do |k,v|
-                    %option{:value => k, :selected => (audience == v)}= t.art_pieces.model.audiences[ v.to_s ]
+                    %option{value: k, selected: (audience == v)}= t.art_pieces.model.audiences[ v.to_s ]
           - else
-            %input{:type => 'hidden', :name => 'art_piece[audience]', :value => ArtPiece::AUDIENCES.keys.first}
+            %input{type: 'hidden', name: 'art_piece[audience]', value: ArtPiece::AUDIENCES.keys.first}
 
           .row.c
             .row_label
-              %label{:for => 'art_piece_scale'}= t.art_pieces.form.customizations.labels.scale
+              %label{for: 'art_piece_scale'}= t.art_pieces.form.customizations.labels.scale
             .row_items.range_length
               .wrap
-                %input#art_piece_scale{:type => 'range', :name => 'art_piece[scale]', :step => 0.1, :value => scale, :min => 0, :max => 2}
+                %input#art_piece_scale{type: 'range', name: 'art_piece[scale]', step: 0.1, value: scale, min: 0, max: 2}
                 %span#scale_output #{'%0.0f%' % (scale.to_f * 100)}
               .tc
                 .l= t.art_pieces.form.customizations.scale.start
@@ -144,29 +145,29 @@
 
           .row.c
             .row_label
-              %label{:for => 'art_piece_title'}= t.art_pieces.form.art_info.labels.title
+              %label{for: 'art_piece_title'}= t.art_pieces.form.art_info.labels.title
             .row_items
-              %input#art_piece_title{:type => 'text', :name => 'art_piece[title]', :value => title}
+              %input#art_piece_title{type: 'text', name: 'art_piece[title]', value: title}
           .row.c
             .row_label
-              %label{:for => 'art_piece_artist'}= t.art_pieces.form.art_info.labels.artist
+              %label{for: 'art_piece_artist'}= t.art_pieces.form.art_info.labels.artist
             .row_items
-              %input#art_piece_artist{:type => 'text', :name => 'art_piece[artist]', :value => artist}
+              %input#art_piece_artist{type: 'text', name: 'art_piece[artist]', value: artist}
           .row.c
             .row_label
-              %label{:for => 'art_piece_year'}= t.art_pieces.form.art_info.labels.year
+              %label{for: 'art_piece_year'}= t.art_pieces.form.art_info.labels.year
             .row_items
-              %input#art_piece_year{:type => 'text', :name => 'art_piece[year]', :value => year}
+              %input#art_piece_year{type: 'text', name: 'art_piece[year]', value: year}
           .row.c
             .row_label
-              %label{:for => 'art_piece_media'}= t.art_pieces.form.art_info.labels.media
+              %label{for: 'art_piece_media'}= t.art_pieces.form.art_info.labels.media
             .row_items
-              %input#art_piece_media{:type => 'text', :name => 'art_piece[media]', :value => media}
+              %input#art_piece_media{type: 'text', name: 'art_piece[media]', value: media}
           .row.c
             .row_label
-              %label{:for => 'art_piece_dimensions'}= t.art_pieces.form.art_info.labels.dimensions
+              %label{for: 'art_piece_dimensions'}= t.art_pieces.form.art_info.labels.dimensions
             .row_items
-              %input#art_piece_dimensions{:type => 'text', :name => 'art_piece[dimensions]', :value => dimensions}
+              %input#art_piece_dimensions{type: 'text', name: 'art_piece[dimensions]', value: dimensions}
 
         %fieldset.buttons.c
           %button.art_piece_back.l= t.art_pieces.form.buttons.back
