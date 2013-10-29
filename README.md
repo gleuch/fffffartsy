@@ -1,12 +1,15 @@
-# FFFFFARTSY
+# FFFFFartsy
 
-Frame any image, video, or web page into a picturesque gallery setting.
+Go professional. Frame any image, video, or web page into a picturesque gallery setting.
 
 
 ### Changelog
 
 _2012-10-19_
   * Working on first version.
+
+_2013-10-26_
+  * Some improvements and code changes, adding some visual and social goodness.
 
 
 ### Modifying
@@ -28,7 +31,10 @@ To get up an running for development:
 ### Credit
 
 A [F.A.T. Lab](http://fffff.at) Project - ([@fffffat](http://twitter.com/fffffat))
+
 Idea by [(Evan Roth)](http://evan-roth.com) - ([@fi5e](http://twitter.com/fi5e))
+
 Built by [Greg Leuch](http://gleu.ch) - ([@gleuch](http://twitter.com/gleuch))
 
-Copyfree 2011 - All Rights Reserved.
+
+Copyfree 2013 - All Rights Reserved.

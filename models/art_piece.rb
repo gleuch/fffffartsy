@@ -31,11 +31,11 @@ class ArtPiece < ActiveRecord::Base
 
 
   def previous(offset = 0)
-    self.class.first(conditions: ['id < ?', self.id], limit: 1, offset: offset, order: "id DESC")
+    self.class.first(conditions: ['id < ? and active = ?', self.id, true], limit: 1, offset: offset, order: "id DESC")
   end
 
   def next(offset = 0)
-    self.class.first(conditions: ['id > ?', self.id], limit: 1, offset: offset, order: "id ASC")
+    self.class.first(conditions: ['id > ? and active = ?', self.id, true], limit: 1, offset: offset, order: "id ASC")
   end
 
 
