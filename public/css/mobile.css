@@ -12,6 +12,8 @@
   #navigation_buttons #next_art_piece {right: -122px;}
   #navigation_buttons a#prev_art_piece:hover, #navigation_buttons a#prev_art_piece:focus {left: -116px;}
   #navigation_buttons a#next_art_piece:hover, #navigation_buttons a#next_art_piece:focus {right: -116px;}
+
+  #footer {display: none;}
 }
 
 @media only screen and (max-width: 550px) {

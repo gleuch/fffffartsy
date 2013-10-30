@@ -5,7 +5,7 @@ body.show_image {background: rgba(255,255,255,1);}
 
 #mobile_notice {display: none; background: rgba(255,255,255,1); color: rgba(128,128,128,1); font-size: 1.3em; text-align: center; padding: 8px 0; font-weight: bold; box-shadow: inset 0 -1px 3px rgba(12,8,6,.12); text-shadow: 0 1px 1px rgba(12,8,6,.08); border-bottom: 1px solid rgba(212,212,212,1);}
 
-#container {width: 100%; height: 100%; overflow: hidden;}
+#container, .container, .container > section, #megaplaya {width: 100%; height: 100%; overflow: hidden;}
 #content {position: relative; width: 100%; height: 100%;}
 #gallery {position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; background: url(../images/gallery.jpg) center 475px no-repeat; -webkit-transition: background-size .2s ease-out; -moz-transition: background-size .2s ease-out; -o-transition: background-size .2s ease-out;}
 #artwork {position: absolute; z-index: 2; top: 80px; left: 0; right: 0; width: 375px; height: 281px; margin: 0 auto; padding: 20px; background: rgba(253,251,250,1); box-shadow: 0 5px 8px rgba(12,8,6,.32); overflow: hidden; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -moz-transition zoom .2s ease-out, width .2s ease-out, height .2s ease-out; -o-transition: zoom .2s ease-out, width .2s ease-out, height .2s ease-out;}
