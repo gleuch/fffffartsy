@@ -93,9 +93,9 @@ body.show_image {background: rgba(255,255,255,1);}
 body.indexlist {overflow: scroll !important;}
 body.indexlist #container {overflow: visible !important;}
 
-#footer {position: fixed; bottom: 15px; left: 20px; right: 20px; text-align: center; z-index: 25;}
+#footer {position: fixed; bottom: 0; left: 20px; right: 20px; text-align: center; z-index: 25; padding: 10px 0 15px 0;}
 body.hide_footer #footer {display: none;}
-body.opac_footer #footer {opacity: .3; -webkit-transition: opacity .2s ease-in-out; -moz-transition: opacity .2s ease-in-out; -ms-transition: opacity .2s ease-in-out; -o-transition: opacity .2s ease-in-out; transition: opacity .2s ease-in-out;}
+body.opac_footer #footer {opacity: 0; -webkit-transition: opacity .2s ease-in-out; -moz-transition: opacity .2s ease-in-out; -ms-transition: opacity .2s ease-in-out; -o-transition: opacity .2s ease-in-out; transition: opacity .2s ease-in-out; background: rgba(0,0,0,0);}
 body.opac_footer #footer:hover {opacity: 1;}
 body.opac_footer #footer #credits {text-shadow: 0 1px 1px rgba(0,0,0,.5);}
 #footer #social_buttons {position: fixed; right: -15px; bottom: 9px; z-index: 26;}
