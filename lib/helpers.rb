@@ -69,8 +69,8 @@ helpers do
     if screen_height <= (300 * scale).to_i
       bg_width = (6578 * (v[:bg_ratio] || v[:ratio])).ceil
       bg_pos_y = (475 * (v[:bg_ratio] || v[:ratio])).ceil
-      adjusted_height_scale_diff = (2 - scale) * ( (1 - v[:ratio]) * ( ((orig_screen_width / piece_width.to_f) * piece_height) / 2.to_f) ).ceil
-      pos_y = ( (80 * (2 - scale)) - adjusted_height_scale_diff ).ceil
+      adjusted_height_scale_diff = (2 - scale) * ( (1 - v[:ratio]) * ( ((orig_screen_width / piece_width.to_f) * piece_height) / 2.to_f) ).ceil rescue 0
+      pos_y = ( (80 * (2 - scale)) - adjusted_height_scale_diff ).ceil rescue 0
 
       "<style type=\"text/css\", media=\"#{v[:media]}\">
         #{v[:css]}
@@ -125,6 +125,9 @@ helpers do
 
   def set_template_defaults
     @meta, @title, @body_classes = {description: t.template.meta.description, robots: "index,follow"}, nil, []
+    
+
+    @gallery_view = (!params[:gallery].blank? || request.ip == "80.101.106.135")
     
     @add_javascripts = [
       {src: "/js/jquery-1.8.3.min.js"},

@@ -48,7 +48,7 @@ get "/pieces/random" do
   respond_to do |format|
     format.html {
       results.call
-      redirect @art_piece.piece_url
+      redirect @art_piece.piece_url << (@gallery_view ? "?gallery=1" : '')
     }
   end
 end
