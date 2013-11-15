@@ -26,7 +26,9 @@
   %head
     %meta{charset:"utf-8"}
     - if @gallery_view
-      %meta{'http-equiv' => 'refresh', content: "30;url=/pieces/random?gallery=1"}
+      %meta{'http-equiv' => 'refresh', content: "30;url=/pieces/recent"}
+      %script
+        setTimeout(function() {window.location.href = '/pieces/recent';}, 31000);
     %title= page_title
     %meta{name: "description", content: @meta[:description]}
     %meta{name: "author", content: t.template.meta.author}

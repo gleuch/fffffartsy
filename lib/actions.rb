@@ -37,6 +37,13 @@ get "/pieces" do
 end
 
 # Show random piece
+get "/pieces/recent" do
+  @gallery_view = true
+  @art_piece = ArtPiece.order('created_at desc').first
+  render_piece
+end
+
+# Show random piece
 get "/pieces/random" do
   results = Proc.new {
     loop {
