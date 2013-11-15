@@ -26,9 +26,11 @@
   %head
     %meta{charset:"utf-8"}
     - if @gallery_view
-      %meta{'http-equiv' => 'refresh', content: "30;url=/pieces/recent"}
-      %script
-        setTimeout(function() {window.location.href = '/pieces/recent';}, 31000);
+      %script{type: 'text/javascript'}
+        setTimeout(function() {
+        window.location.href = "/pieces/recent";
+        setInterval(function() {window.location.href = "/pieces/recent";}, 15000);
+        }, 30000);
     %title= page_title
     %meta{name: "description", content: @meta[:description]}
     %meta{name: "author", content: t.template.meta.author}
