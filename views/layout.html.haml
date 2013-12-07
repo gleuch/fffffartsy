@@ -28,8 +28,8 @@
     - if @gallery_view
       %script{type: 'text/javascript'}
         setTimeout(function() {
-        window.location.href = "/pieces/recent";
-        setInterval(function() {window.location.href = "/pieces/recent";}, 15000);
+        window.location.href = "/pieces/gallery";
+        setInterval(function() {window.location.href = "/pieces/gallery";}, 15000);
         }, 30000);
     %title= page_title
     %meta{name: "description", content: @meta[:description]}
